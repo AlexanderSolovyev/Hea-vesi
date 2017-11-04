@@ -1,14 +1,43 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Alexei Ivanov
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content no-padding>
+
+  <img src="../assets/imgs/mini_bottles-1.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
+
+  <ion-item text-center>
+  <button ion-button round  color="danger">
+    <ion-icon name="arrow-dropleft-circle"></ion-icon>
+  </button>
+    <ion-chip>2 Tk</ion-chip>
+    <button ion-button round color="secondary">
+      <ion-icon name="arrow-dropright-circle"></ion-icon>
+    </button>
+  </ion-item>
+
+    <ion-item text-center>
+        <ion-datetime min="2017" max="2018"></ion-datetime>
+
+      <ion-select>
+        <ion-option selected="true">19.00-21.00</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-select [(ngModel)]="address">
+        <ion-option selected="true">Liikury 20-25, Tallinn</ion-option>
+      </ion-select>
+    </ion-item>
+
+  <img src="../assets/imgs/auto.JPG" style="height: auto; margin-left: auto; margin-right: auto;">
+
+  <button ion-button full large>TELLI</button>
 </ion-content>
+
