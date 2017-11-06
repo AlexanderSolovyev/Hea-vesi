@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import {OrderPage} from "../pages/order/order";
 import {OkPage} from "../pages/ok/ok";
 import {SettingsPage} from "../pages/settings/settings";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {SettingsPage} from "../pages/settings/settings";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
