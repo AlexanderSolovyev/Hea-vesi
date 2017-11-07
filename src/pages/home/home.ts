@@ -24,10 +24,10 @@ export class HomePage {
   deliveryAddresses = [
     "Liikury 20-25, Tallinn"
   ];
+  deliveryTime = this.deliveryTimes[0];
+  deliveryAddress = this.deliveryAddresses[0];
 
   constructor(public navCtrl: NavController) {
-    this.deliveryTime = this.deliveryTimes[0];
-    this.deliveryAddress = this.deliveryAddresses[0];
 
   }
   goToOrder() {

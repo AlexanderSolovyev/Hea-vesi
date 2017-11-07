@@ -9,7 +9,8 @@ import { HomePage } from '../pages/home/home';
 import {OrderPage} from "../pages/order/order";
 import {OkPage} from "../pages/ok/ok";
 import {SettingsPage} from "../pages/settings/settings";
-import {FormsModule} from "@angular/forms";
+import {FormsModule } from "@angular/forms";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {FormsModule} from "@angular/forms";
   providers: [
     StatusBar,
     SplashScreen,
+    NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

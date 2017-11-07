@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FormGroup, NgForm} from "@angular/forms";
 
 /**
  * Generated class for the SettingsPage page.
@@ -12,13 +13,21 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
-export class SettingsPage {
+export class SettingsPage  {
+  name: string = "Alexander";
+  form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  saveProfile() {
+    console.log('submit')
+  }
+  submitForm(form: NgForm){
+    console.log('submitted',form)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-
 }

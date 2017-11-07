@@ -16,34 +16,81 @@
 <ion-content padding>
   <ion-list>
     <ion-list-header>Profile</ion-list-header>
+    <form (ngSubmit)="submitForm(form)" #form="ngForm">
     <ion-item>
-    <ion-input placeholder="Firm"></ion-input>
+    <ion-input placeholder="Firma nimetus"
+               type="text"
+               [(ngModel)]="firma"
+               name="firma"
+                >
+
+    </ion-input>
     </ion-item>
     <ion-item>
-    <ion-input placeholder="Nim"></ion-input>
+    <ion-input placeholder="Nimi"
+               type="text"
+               [(ngModel)]="name"
+               name="name"
+               required
+               >
+
+    </ion-input>
     </ion-item>
     <ion-item>
-    <ion-input placeholder="Telefon"></ion-input>
+    <ion-input placeholder="Telefon"
+               type="tel"
+               required
+               [(ngModel)]="phone"
+               name="phone"
+               >
+
+    </ion-input>
       </ion-item>
 
     <ion-item>
-    <ion-input placeholder="email"></ion-input>
+    <ion-input placeholder="Email"
+               type="email"
+               [(ngModel)]="eMail"
+               name="email"
+                required>
+
+    </ion-input>
     </ion-item>
 
       <ion-item>
-    <ion-input placeholder="Vitenumber"></ion-input>
+    <ion-input placeholder="Vitenumber"
+               type="number"
+               [(ngModel)]="contractNr"
+                name="number"
+                required>
+
+    </ion-input>
       </ion-item>
 
         <ion-item>
-    <ion-input placeholder="Address"></ion-input>
-        </ion-item>
-  <ion-item>
-      <ion-label>City</ion-label>
-    <ion-select>
-    <ion-option >Tallinn</ion-option>
+    <ion-input placeholder="Address"
+               type="text"
+               [(ngModel)]="Address"
+               name="address"
+                required>
+
+    </ion-input>
+    <ion-select [(ngModel)]="city"
+                name="city"
+                required>
+    <ion-option selected="true">Tallinn ja Harjumaa</ion-option>
+      <ion-option>Tartu</ion-option>
+      <ion-option>Jõhvi</ion-option>
+      <ion-option>Narva</ion-option>
+      <ion-option>Kohtla-Järve</ion-option>
+      <ion-option>Sillamäe</ion-option>
+      <ion-option>Rakvere</ion-option>
     </ion-select>
   </ion-item>
-
+    <ion-item>
+      <button ion-button type="submit" [disabled]="!form.valid"> Save </button>
+    </ion-item>
+    </form>
   </ion-list>
 
   <ion-list radio-group>
@@ -66,6 +113,7 @@
     <ion-item class="item-icon-right positive" href="tel:+3726400036">+3726400036</ion-item>
   </ion-list>
   <ion-item> www.haevi</ion-item>
-  <button> Cancel order</button>
+
+  <p>{{firm}}</p>
 
 </ion-content>
