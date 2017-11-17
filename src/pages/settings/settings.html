@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hideBackButton]="!form.valid || (data.deliveryAddresses.length==0)">
     <ion-title>settings</ion-title>
   </ion-navbar>
 
@@ -14,106 +14,131 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-list-header>Profile</ion-list-header>
-    <form (ngSubmit)="submitForm(form)" #form="ngForm">
-    <ion-item>
-    <ion-input placeholder="Firma nimetus"
-               type="text"
-               [(ngModel)]="firma"
-               name="firma"
-                >
-
-    </ion-input>
-    </ion-item>
-    <ion-item>
-    <ion-input placeholder="Nimi"
-               type="text"
-               [(ngModel)]="name"
-               name="name"
-               required
-               >
-
-    </ion-input>
-    </ion-item>
-    <ion-item>
-    <ion-input placeholder="Telefon"
-               type="tel"
-               required
-               [(ngModel)]="phone"
-               name="phone"
-               >
-
-    </ion-input>
-      </ion-item>
-
-    <ion-item>
-    <ion-input placeholder="Email"
-               type="email"
-               [(ngModel)]="eMail"
-               name="email"
-                required>
-
-    </ion-input>
-    </ion-item>
-
-      <ion-item>
-    <ion-input placeholder="Vitenumber"
-               type="number"
-               [(ngModel)]="contractNr"
-                name="number"
-                required>
-
-    </ion-input>
-      </ion-item>
-
-        <ion-item>
-    <ion-input placeholder="Address"
-               type="text"
-               [(ngModel)]="Address"
-               name="address"
-                required>
-
-    </ion-input>
-    <ion-select [(ngModel)]="city"
-                name="city"
-                required>
-    <ion-option selected="true">Tallinn ja Harjumaa</ion-option>
-      <ion-option>Tartu</ion-option>
-      <ion-option>Jõhvi</ion-option>
-      <ion-option>Narva</ion-option>
-      <ion-option>Kohtla-Järve</ion-option>
-      <ion-option>Sillamäe</ion-option>
-      <ion-option>Rakvere</ion-option>
-    </ion-select>
-  </ion-item>
-    <ion-item>
-      <button ion-button type="submit" [disabled]="!form.valid"> Save </button>
-    </ion-item>
-    </form>
-  </ion-list>
 
   <ion-list radio-group>
     <ion-list-header>Language</ion-list-header>
     <ion-item>
-      <ion-label>Estonish</ion-label>
-      <ion-radio></ion-radio>
+      <ion-label>Eesti</ion-label>
+      <ion-radio checked="true"></ion-radio>
     </ion-item>
     <ion-item>
-      <ion-label>Руссиш</ion-label>
+      <ion-label>Русский</ion-label>
       <ion-radio></ion-radio>
     </ion-item>
   </ion-list>
 
   <ion-list>
-    <ion-list-header>Contacts</ion-list-header>
-      <ion-item class="item-icon-right positive" href="mailto:info@heavesi.ee"> info@heavesi.ee<i class="icon ion-ios-email-outline"></i>
+    <ion-list-header>Profile</ion-list-header>
+    <form (ngSubmit)="saveProfile(form)" #form="ngForm">
+      <ion-item>
+        <ion-input placeholder="Firma nimetus"
+                   type="text"
+                   [(ngModel)]="data.firm"
+                   name="firma"
+        >
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Nimi"
+                   type="text"
+                   [(ngModel)]="data.name"
+                   name="name"
+                   required
+        >
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Telefon"
+                   type="tel"
+                   required
+                   [(ngModel)]="data.phone"
+                   name="phone"
+        >
+
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Email"
+                   type="email"
+                   [(ngModel)]="data.email"
+                   name="email"
+                   required>
+
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Vitenumber"
+                   type="number"
+                   [(ngModel)]="data.vitenumber"
+                   name="number"
+                   >
+
+        </ion-input>
+      </ion-item>
+
+      <ion-card>
+        <ion-card-header>Adresses</ion-card-header>
+      <ion-item *ngFor="let address of data.deliveryAddresses;index" >
+        <ion-card-content> {{address}}
+          <ion-icon name="ios-remove-circle" color="danger" float-right (click)="decAddress(index)"></ion-icon>
+        </ion-card-content>
+      </ion-item>
+      </ion-card>
+      <button ion-button color="secondary" [disabled]="!form.valid || (data.deliveryAddresses.length==0)">Save profile</button>
+
+
+
+    </form>
+  <form (ngSubmit)="addAddress(form1)" #form1="ngForm">
+    <ion-item>
+      <ion-input placeholder="New Address"
+                 type="text"
+                 [(ngModel)]="ulitsa"
+                 name="adress"
+                 required
+      >
+
+      </ion-input>
+      <ion-select [(ngModel)]="city"
+                  name="city"
+                  required
+      >
+        <ion-option selected="true">Tallinn ja Harjumaa</ion-option>
+        <ion-option>Tartu</ion-option>
+        <ion-option>Jõhvi</ion-option>
+        <ion-option>Narva</ion-option>
+        <ion-option>Kohtla-Järve</ion-option>
+        <ion-option>Sillamäe</ion-option>
+        <ion-option>Rakvere</ion-option>
+      </ion-select>
 
     </ion-item>
-    <ion-item class="item-icon-right positive" href="tel:+3726400036">+3726400036</ion-item>
-  </ion-list>
-  <ion-item> www.haevi</ion-item>
+      <button ion-button outline item-end small type="submit" [disabled]="!form1.valid">Add address</button>
 
-  <p>{{firm}}</p>
+  </form>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-list-header>Contacts</ion-list-header>
+    
+    <a ion-item href="mailto: info@heavesi.ee"> info@heavesi.ee</a>
+    
+    <a ion-item  href="tel: +3726400036">+3726400036</a>
+
+    <a ion-item href="http://heavesi.ee">www.heavesi.ee</a>
+    <ion-item>
+      <h2>Toompuiestee 30,</h2>
+      <h2> Tallinn Harjumaa 101149</h2>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="danger">destroy tellimus</button>
+
+
+
 
 </ion-content>

@@ -11,6 +11,8 @@ import {OkPage} from "../pages/ok/ok";
 import {SettingsPage} from "../pages/settings/settings";
 import {FormsModule } from "@angular/forms";
 import {NativeStorage} from "@ionic-native/native-storage";
+import {StorageService} from "../pages/storage.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {NativeStorage} from "@ionic-native/native-storage";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,6 +40,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
     StatusBar,
     SplashScreen,
     NativeStorage,
+    StorageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
