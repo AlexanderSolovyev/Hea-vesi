@@ -1,3 +1,21 @@
 page-home {
-
+  .adres.item-select {
+  //  position: initial;
+    margin-left: 0%;
+    width: 100%;
+    text-align: center;
+  }
+  .date {
+   // position: initial;
+    margin-left: 10%;
+    width: 100%;
+    text-align: center;
+  }
+  .my-select {
+    max-width: 100%;
+    min-width: 70%;
+  }
+  .car {
+    display: block;
+  }
 }

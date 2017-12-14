@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Platform} from 'ionic-angular';
 import {OrderPage} from "../order/order";
 import {SettingsPage} from "../settings/settings";
 import {StorageService} from "../storage.service";
@@ -9,6 +9,8 @@ import {StorageService} from "../storage.service";
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit{
+
+  active:boolean = false;
 
   order = {
     bottles: 2 ,
@@ -24,7 +26,7 @@ export class HomePage implements OnInit{
     phone: '',
     email: '',
     vitenumber: '',
-    deliveryAddresses: []
+    // deliveryAddresses: []
   };
 
   deliveryTimes = [
@@ -33,7 +35,6 @@ export class HomePage implements OnInit{
     "13:00 - 17:00",
     "17:00 - 20:00"
   ];
-
 
   //deliveryAddresses = [
   //  "Liikury 20-25, Tallinn",
@@ -44,30 +45,31 @@ export class HomePage implements OnInit{
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private storageservice: StorageService) {
+              private storageservice: StorageService,
+              public plt: Platform) {
+    this.plt.ready().then (() => {
+      this.loadInitial();
+    })
 
   }
   ngOnInit(){
-    this.storageservice.loadOrder();
-    this.storageservice.loadData()
-      .then(
-        data => this.storageservice.data=data,
-        error => this.navCtrl.push(SettingsPage)
-      );
-    this.order=this.storageservice.order;
-    this.order.deliveryDate=this.deliveryDate;
-    this.data = this.storageservice.data;
-    console.log(this.data);
-    this.storageservice.order.deliveryAddress = this.storageservice.data.deliveryAddresses[0];
+
+
+  }
+
+  ionViewVDidLoad(){
+
   }
   goToOrder() {
     this.storageservice.saveOrder();
     this.storageservice.order.returnedBottles=this.storageservice.order.bottles;
-    this.navCtrl.push(OrderPage);
+    this.carGo();
+
 
 
   }
   GoToSettings() {
+
     this.navCtrl.push(SettingsPage)
   }
   minDate=this.calculateTomorrow();
@@ -86,5 +88,28 @@ export class HomePage implements OnInit{
   incBottle(){
     this.storageservice.order.bottles= this.storageservice.order.bottles+1;
     };
+
+  loadInitial(){
+    this.storageservice.loadOrder();
+    this.storageservice.loadData()
+      .then(
+        data => {
+          this.storageservice.data=data;
+          this.order.deliveryAddress = this.storageservice.data.deliveryAddresses[0];
+          },
+        error => this.navCtrl.push(SettingsPage)
+      );
+    this.order=this.storageservice.order;
+    this.order.deliveryDate=this.deliveryDate;
+  }
+  carGo(){
+    this.active=true;
+    setTimeout(() =>{ this.navCtrl.push(OrderPage);}, 2100);
+
+
+  };
+  ionViewWillEnter(){
+    this.active=false
+  }
 }
 

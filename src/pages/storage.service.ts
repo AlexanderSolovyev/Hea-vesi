@@ -15,7 +15,7 @@ export class StorageService {
     phone: '',
     email: '',
     vitenumber: '',
-    deliveryAddresses: []
+    deliveryAddresses: ['1']
   };
   order = {
     bottles: 2,
@@ -55,19 +55,18 @@ export class StorageService {
     return this.nativeStorage.getItem('data')
 
   };
-
-  sendOrder() {
+  sendOrder(){
     const info = {
       firm: this.data.firm,
       name: this.data.name,
       phone: this.data.phone,
       email: this.data.email,
       vitenumber: this.data.vitenumber,
-      deliveryAddress: this.order.deliveryAddress,
-      deliveryDate: (this.order.deliveryDate).split('.')[0],
-      deliveryTime: this.order.deliveryTime,
+      delivery_address: this.order.deliveryAddress,
+      delivery_date: (this.order.deliveryDate).split('.')[0],
+      delivery_time: this.order.deliveryTime,
       bottles: this.order.bottles,
-      returnedBottles: this.order.returnedBottles,
+      returned_bottles: this.order.returnedBottles,
       information: this.order.information
 
     };
@@ -75,10 +74,12 @@ export class StorageService {
     let username: string = 'exch';
     let password: string = '13572468';
     let headers: Headers = new Headers();
-    headers.append("Authorization", "Basic " + btoa(username + ":" + password));
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post('http://212.7.4.74:8000/hv_copy/hs/PutOrder?Orders=Hello', info,{headers: headers})
-
+    //headers.append("Authorization", "Basic " + btoa(username + ":" + password));
+    //headers.append("Content-Type", "application/x-www-form-urlencoded");
+    //headers.append("Authorization", "Basic ZXhjaDoxMzU3MjQ2OA=="
+    // headers.append( "Access-Control-Allow-Origin", "*");
+    //return this.http.post('http://212.7.4.74:8000/hv_copy/hs/PutOrder?Orders=Hello', info,{headers: headers})
+    return this.http.post('http://80.235.24.138:88/order/create',info,{headers: headers})
   };
 
 

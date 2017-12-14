@@ -5,7 +5,6 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar [hideBackButton]="!form.valid || (data.deliveryAddresses.length==0)">
     <ion-title>settings</ion-title>
   </ion-navbar>
@@ -13,9 +12,9 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="outer-content">
 
-  <ion-list radio-group>
+  <ion-list radio-group >
     <ion-list-header>Language</ion-list-header>
     <ion-item>
       <ion-label>Eesti</ion-label>
@@ -27,12 +26,13 @@
     </ion-item>
   </ion-list>
 
-  <ion-list>
+  <ion-list >
     <ion-list-header>Profile</ion-list-header>
     <form (ngSubmit)="saveProfile(form)" #form="ngForm">
       <ion-item>
-        <ion-input placeholder="Firma nimetus"
-                   type="text"
+        <ion-icon name="archive" color="primary"item-start></ion-icon>
+        <ion-label color="primary" floating>Firma nimetus</ion-label>
+        <ion-input type="text"
                    [(ngModel)]="data.firm"
                    name="firma"
         >
@@ -40,8 +40,9 @@
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="Nimi"
-                   type="text"
+        <ion-icon name="person" color="primary" item-start></ion-icon>
+        <ion-label color="primary" floating>Nimi</ion-label>
+        <ion-input type="text"
                    [(ngModel)]="data.name"
                    name="name"
                    required
@@ -50,8 +51,9 @@
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="Telefon"
-                   type="tel"
+        <ion-icon name="call" color="primary" item-start></ion-icon>
+        <ion-label color="primary" floating>Telefon</ion-label>
+        <ion-input type="tel"
                    required
                    [(ngModel)]="data.phone"
                    name="phone"
@@ -61,8 +63,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-input placeholder="Email"
-                   type="email"
+        <ion-icon name="mail" color="primary" item-start></ion-icon>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email"
                    [(ngModel)]="data.email"
                    name="email"
                    required>
@@ -71,8 +74,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-input placeholder="Vitenumber"
-                   type="number"
+        <ion-icon name="card" color="primary" item-start></ion-icon>
+        <ion-label color="primary" floating>Vitenumber</ion-label>
+        <ion-input type="number"
                    [(ngModel)]="data.vitenumber"
                    name="number"
                    >
@@ -80,23 +84,16 @@
         </ion-input>
       </ion-item>
 
-      <ion-card>
-        <ion-card-header>Adresses</ion-card-header>
-      <ion-item *ngFor="let address of data.deliveryAddresses;index" >
-        <ion-card-content> {{address}}
-          <ion-icon name="ios-remove-circle" color="danger" float-right (click)="decAddress(index)"></ion-icon>
-        </ion-card-content>
-      </ion-item>
-      </ion-card>
-      <button ion-button color="secondary" [disabled]="!form.valid || (data.deliveryAddresses.length==0)">Save profile</button>
-
-
 
     </form>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>Addresses</ion-list-header>
   <form (ngSubmit)="addAddress(form1)" #form1="ngForm">
     <ion-item>
+      <ion-icon name="home" color="primary" item-start></ion-icon>
       <ion-input placeholder="New Address"
-                 type="text"
+                  type="text"
                  [(ngModel)]="ulitsa"
                  name="adress"
                  required
@@ -117,26 +114,36 @@
       </ion-select>
 
     </ion-item>
-      <button ion-button outline item-end small type="submit" [disabled]="!form1.valid">Add address</button>
+      <button ion-button  color="secondary" full type="submit" [disabled]="!form1.valid">Add address</button>
 
   </form>
+
+      <ion-item *ngFor="let address of data.deliveryAddresses;index" >
+         {{address}}
+          <ion-icon name="ios-remove-circle" color="danger" item-start (click)="decAddress(index)"></ion-icon>
+      </ion-item>
   </ion-list>
 
 
-  <ion-list>
+  <ion-list >
     <ion-list-header>Contacts</ion-list-header>
-    
-    <a ion-item href="mailto: info@heavesi.ee"> info@heavesi.ee</a>
-    
-    <a ion-item  href="tel: +3726400036">+3726400036</a>
+    <a button ion-item href="mailto: info@heavesi.ee">
+      <ion-icon name="mail" color="primary" item-start></ion-icon>
+      info@heavesi.ee</a>
 
-    <a ion-item href="http://heavesi.ee">www.heavesi.ee</a>
+    <a button ion-item href="tel:+3726400036">
+      <ion-icon name="call" color="primary" item-start></ion-icon>
+      +3726400036</a>
+    <a button ion-item href="http://heavesi.ee">
+      <ion-icon name="information-circle" color="primary"item-start></ion-icon>
+      www.heavesi.ee</a>
     <ion-item>
+      <ion-icon name="home" color="primary" item-start></ion-icon>
       <h2>Toompuiestee 30,</h2>
       <h2> Tallinn Harjumaa 101149</h2>
     </ion-item>
   </ion-list>
-  <button ion-button color="danger">destroy tellimus</button>
+  <a button ion-button full href="mailto:info@heavesi.ee?subject=Destroy tellimus&body=Отмените мой заказ" color="danger">destroy tellimus</a >
 
 
 

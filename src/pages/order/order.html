@@ -13,23 +13,29 @@
 </ion-header>
 
 
-<ion-content no-padding>
-  <h5 text-center>Tagastan tühjad puudelit:</h5>
-  <h3 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> {{order.returnedBottles}} tk <span style="color:green;" (click)="incReturnedBottle()">+</span></h3>
-  <ion-item>
-  <ion-textarea placeholder="Lisainfo" [(ngModel)]="order.information"></ion-textarea>
-  </ion-item>
-  <ion-item>
-  <p>{{data.name}}</p>
-  <p>{{data.vitenumber}}</p>
-  <p>{{data.email}}</p>
+<ion-content no-padding text-center>
+
+  <p ><strong>Tagastan tühjad puudelit:</strong></p>
+
+  <ion-chip >
+    <ion-icon name="remove" color="danger" (click)="decReturnedBottle()"></ion-icon>
+    <ion-label >{{order.returnedBottles}} tk </ion-label>
+    <ion-icon name="add" color="secondary" (click)="incReturnedBottle()"> </ion-icon>
+  </ion-chip>
+
+  <!--<h3 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> {{order.returnedBottles}} tk <span style="color:green;" (click)="incReturnedBottle()">+</span></h3> -->
+  <ion-item no-lines>
+  <p>{{data.name}}, {{data.vitenumber}}, {{data.email}}</p>
   <p>{{order.deliveryAddress}}</p>
-  <p>Soovin saata:</p>
-  <p>{{order.bottles}} tk, {{order.deliveryDate | date}}, {{order.deliveryTime}}</p>
+  <p>Soovin saata: {{order.bottles}} tk, {{order.deliveryDate | date}}, {{order.deliveryTime}}</p>
   </ion-item>
-
-  <img src="./assets/imgs/plane.JPG" style="height: auto; margin-left: auto; margin-right: auto;">
-
-  <button ion-button color="secondary" full large (click)="goToOk()">KINNITA</button>
-
 </ion-content>
+<ion-footer>
+  <ion-item>
+    <ion-input placeholder="Lisainfo" [(ngModel)]="order.information"></ion-input>
+  </ion-item>
+  <img *ngIf="!active" src="./assets/imgs/plane-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
+  <img *ngIf="active" src="./assets/imgs/plane-1.gif" style="height: auto; margin-left: auto; margin-right: auto;">
+
+  <button ion-button color="secondary" full large (click)="animGo()" [disabled]="active">KINNITA</button>
+</ion-footer>

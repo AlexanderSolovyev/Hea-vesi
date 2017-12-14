@@ -13,6 +13,7 @@ import {FormsModule } from "@angular/forms";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {StorageService} from "../pages/storage.service";
 import {HttpModule} from "@angular/http";
+import {ScreenOrientation} from "@ionic-native/screen-orientation";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {HttpModule} from "@angular/http";
     SplashScreen,
     NativeStorage,
     StorageService,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

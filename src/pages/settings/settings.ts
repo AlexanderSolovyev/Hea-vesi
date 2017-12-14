@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Navbar, NavController, NavParams} from 'ionic-angular';
 import { FormGroup, NgForm} from "@angular/forms";
 import { StorageService } from '../storage.service'
 
@@ -15,6 +15,9 @@ import { StorageService } from '../storage.service'
   templateUrl: 'settings.html',
 })
 export class SettingsPage implements OnInit {
+
+  @ViewChild(Navbar) navBar: Navbar;
+
   form: FormGroup;
   data = {
     firm: '',
@@ -25,7 +28,7 @@ export class SettingsPage implements OnInit {
     deliveryAddresses: []
 };
     ulitsa: string;
-    city: string;
+    city: string = 'Tallinn ja Harjumaa';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -35,17 +38,26 @@ export class SettingsPage implements OnInit {
     this.data = this.storageservice.data;
   }
 
-  saveProfile(form: NgForm){
-    this.storageservice.saveData();
-
-  }
 
    addAddress(form1: NgForm) {
      this.storageservice.data.deliveryAddresses.push(this.ulitsa +', '+ this.city);
-    console.log(form1);
+     this.ulitsa='';
+     this.city='Tallinn ja Harjumaa';
    }
    decAddress (index) {
-    console.log('click');
-    this.data.deliveryAddresses.splice(index,1)
+     this.data.deliveryAddresses.splice(index, 1)
    }
+
+  ionViewDidLoad() {
+    this.setBackButtonAction();
+  }
+
+  setBackButtonAction(){
+    this.navBar.backButtonClick = () => {
+      this.storageservice.saveData();
+      this.storageservice.order.deliveryAddress = this.storageservice.data.deliveryAddresses[0];
+      this.navCtrl.pop()
+    }
+  }
+
 }

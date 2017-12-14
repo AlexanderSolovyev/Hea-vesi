@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import {OkPage} from "../ok/ok";
 import {StorageService} from "../storage.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 /**
  * Generated class for the OrderPage page.
@@ -21,6 +22,9 @@ export class OrderPage implements OnInit{
               private storageservice: StorageService,
               private alertCtrl: AlertController) {
   }
+
+  active: boolean=false;
+
   order ={
     bottles: 2 ,
     returnedBottles: 2,
@@ -41,7 +45,6 @@ export class OrderPage implements OnInit{
     this.order=this.storageservice.order;
     this.data=this.storageservice.data;
   }
-
   goToOk(){
     console.log(this.data,this.order);
     this.storageservice.sendOrder()
@@ -49,10 +52,18 @@ export class OrderPage implements OnInit{
           console.log(json);
           this.navCtrl.push(OkPage);
     },
-        err => {
-          this.errorAlert();
-        }
-        );
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.log('An error occurred:', err.error.message);
+          } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.log(`Backend returned code ${err.status}, body was: ${err.error}`)
+          };
+          this.errorAlert(err);
+
+        });
 
   }
   decReturnedBottle(){
@@ -64,13 +75,23 @@ export class OrderPage implements OnInit{
     this.order.returnedBottles = this.order.returnedBottles + 1;
   };
 
-  errorAlert() {
+  errorAlert(err) {
+    console.log(err);
     let alert = this.alertCtrl.create({
       title: 'Server error',
-      subTitle: 'Server not available. Theremay be an internet connection problem. Please try later.',
+      subTitle: err,
       buttons: ['Ok']
     });
     alert.present();
   }
-
+  ionViewWillEnter(){
+    this.active=false
+  }
+  animGo() {
+    this.active = true;
+    setTimeout(() => {
+      this.goToOk();
+      this.active=false;
+    }, 2750);
+  }
 }
