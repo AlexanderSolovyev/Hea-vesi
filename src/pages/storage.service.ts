@@ -71,8 +71,8 @@ export class StorageService {
 
     };
     console.log(info);
-    let username: string = 'exch';
-    let password: string = '13572468';
+    //let username: string = 'exch';
+    //let password: string = '13572468';
     let headers: Headers = new Headers();
     //headers.append("Authorization", "Basic " + btoa(username + ":" + password));
     //headers.append("Content-Type", "application/x-www-form-urlencoded");
