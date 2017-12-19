@@ -10,12 +10,12 @@ export class StorageService {
               private nativeStorage: NativeStorage) {}
 
   data = {
-    firm: '',
-    name: '',
-    phone: '',
-    email: '',
-    vitenumber: '',
-    deliveryAddresses: ['1']
+    firm: 'Hea Vesi',
+    name: 'Alexei Ivanov',
+    phone: '+3894848732',
+    email: 'alexei@gmail.com',
+    vitenumber: '39520472640691',
+    deliveryAddresses: ['Liikurry 57/1, Tallinn ja Harjumaa', 'Arbu 14/2, Tallin ja Harjumaa']
   };
   order = {
     bottles: 2,
@@ -78,8 +78,9 @@ export class StorageService {
     //headers.append("Content-Type", "application/x-www-form-urlencoded");
     //headers.append("Authorization", "Basic ZXhjaDoxMzU3MjQ2OA=="
     // headers.append( "Access-Control-Allow-Origin", "*");
-    //return this.http.post('http://212.7.4.74:8000/hv_copy/hs/PutOrder?Orders=Hello', info,{headers: headers})
-    return this.http.post('http://80.235.24.138:88/order/create',info,{headers: headers})
+    return this.http.post('http://212.7.4.74:8443/order/create', info,{headers: headers})
+    //return this.http.post('https://fathomless-ridge-64107.herokuapp.com/order/create',info,{headers: headers})
+    //return this.http.post('http://80.235.24.138:88/order/create',info,{headers: headers})
   };
 
 
