@@ -17,21 +17,22 @@
 
   <p ><strong>Tagastan tühjad puudelit:</strong></p>
 
-  <ion-chip color='no' style="zoom:1.2;">
+  <!-- <ion-chip color='no' style="zoom:1.2;">
     <ion-icon name="remove" color="danger" (click)="decReturnedBottle()"></ion-icon>
     <ion-label ><strong style="zoom:1.2;">{{order.returnedBottles}} tk </strong></ion-label>
     <ion-icon name="add" color="secondary" (click)="incReturnedBottle()"> </ion-icon>
-  </ion-chip>
+  </ion-chip> -->
 
-  <!--<h3 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> {{order.returnedBottles}} tk <span style="color:green;" (click)="incReturnedBottle()">+</span></h3> -->
+  <h2 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> &emsp;{{order.returnedBottles}} tk &emsp;<span style="color:green;" (click)="incReturnedBottle()">+</span></h2>
   <ion-item no-lines>
-  <p>{{data.name}}, {{data.vitenumber}}, {{data.email}}</p>
-  <p>{{order.deliveryAddress}}</p>
-  <p>Soovin saata: {{order.bottles}} tk, {{order.deliveryDate | date}}, {{order.deliveryTime}}</p>
+  <h3>{{data.vitenumber}}, {{data.email}}</h3>
+    <h3>{{order.deliveryAddress}}</h3>
+    <h3>{{order.bottles}} tk, {{order.deliveryDate | date}}, {{order.deliveryTime}}</h3>
   </ion-item>
 </ion-content>
 <ion-footer>
   <ion-item>
+    <ion-icon name="create" color="" item-start></ion-icon>
     <ion-input placeholder="Lisainfo" [(ngModel)]="order.information"></ion-input>
   </ion-item>
   <img *ngIf="!active" src="./assets/imgs/plane-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
