@@ -15,5 +15,6 @@
 
 
 <ion-content no-padding>
-  <img src="./assets/imgs/aitah-2.gif" style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
+  <img *ngIf="active" src="assets/imgs/aitah-2.gif" style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
+  <img *ngIf="!active" src="assets/imgs/aitah-69.png" style="width: 100%; height: 100%; margin-left: auto; margin-right: auto;">
 </ion-content>

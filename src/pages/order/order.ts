@@ -62,7 +62,7 @@ export class OrderPage implements OnInit{
             console.log(`Backend returned code ${err.status}, body was: ${err.error}`)
           };
           this.errorAlert(err);
-
+      this.navCtrl.push(OkPage);
         });
 
   }

@@ -25,9 +25,11 @@
 
   <h2 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> &emsp;{{order.returnedBottles}} tk &emsp;<span style="color:green;" (click)="incReturnedBottle()">+</span></h2>
   <ion-item no-lines>
-  <h3>{{data.vitenumber}}, {{data.email}}</h3>
-    <h3>{{order.deliveryAddress}}</h3>
-    <h3>{{order.bottles}} tk, {{order.deliveryDate | date}}, {{order.deliveryTime}}</h3>
+    <h2>{{data.vitenumber}}</h2>
+    <h2>{{data.email}}</h2>
+    <h2>{{order.deliveryAddress}}</h2>
+  <br>
+    <h2>{{order.bottles}} tk, {{order.deliveryDate | date}}, {{order.deliveryTime}}</h2>
   </ion-item>
 </ion-content>
 <ion-footer>
@@ -35,8 +37,8 @@
     <ion-icon name="create" color="" item-start></ion-icon>
     <ion-input placeholder="Lisainfo" [(ngModel)]="order.information"></ion-input>
   </ion-item>
-  <img *ngIf="!active" src="./assets/imgs/plane-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
-  <img *ngIf="active" src="./assets/imgs/plane-1.gif" style="height: auto; margin-left: auto; margin-right: auto;">
+  <img *ngIf="!active" src="assets/imgs/plane-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
+  <img *ngIf="active" src="assets/imgs/plane-1.gif" style="height: auto; margin-left: auto; margin-right: auto;">
 
   <button ion-button color="secondary" full large (click)="animGo()" [disabled]="active">KINNITA</button>
 </ion-footer>

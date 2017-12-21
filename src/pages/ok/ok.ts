@@ -16,9 +16,10 @@ export class OkPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+  active: boolean=true;
   ionViewWillEnter () {
     setTimeout(() => {
-      this.navCtrl.popToRoot();
+      this.active=false;
     }, 2750);
   }
 

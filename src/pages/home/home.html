@@ -13,7 +13,7 @@
 
 
 <ion-content  padding style="text-align:center">
-  <img src="./assets/imgs/bottles1.png" style="display: block; width: 20%; height: auto; margin-left: auto; margin-right: auto;">
+  <img src="./assets/imgs/bottles1.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
 
  <h2 text-center><span style="color:red;" (click)="decBottle()">-</span>&emsp; {{storageservice.order.bottles}} tk &emsp;<span style="color:green;"(click)="incBottle()">+</span></h2>
 <!-- <ion-chip color='no' style="zoom:1.2;">
@@ -38,8 +38,8 @@
     </ion-select>
   </ion-item>
  <!-- <img src="./assets/imgs/auto.JPG" style="height: auto; margin-left: auto; margin-right: auto;">-->
-  <img *ngIf="active" src="./assets/imgs/car-1.gif"  style="height: auto;margin-left: auto; margin-right: auto;">
-  <img *ngIf="!active" src="./assets/imgs/car-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
+  <img *ngIf="active" src="assets/imgs/car1.gif"  style="height: auto;margin-left: auto; margin-right: auto;">
+  <img *ngIf="!active" src="assets/imgs/car1-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
   <button ion-button full large (click)="goToOrder()" [disabled]="active">TELLI</button>
 </ion-footer>
 
