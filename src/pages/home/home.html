@@ -23,7 +23,7 @@
 </ion-chip> -->
 
   <ion-item  class="date" no-lines>
-    <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="MMM DD, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
+    <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="DD MMM, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
 
     <ion-select [(ngModel)]="order.deliveryTime" style="min-width: 50%">
       <ion-option *ngFor="let delivery of deliveryTimes" >{{delivery}}</ion-option>

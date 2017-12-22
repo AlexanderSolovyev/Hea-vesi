@@ -21,6 +21,9 @@ export class OkPage {
     setTimeout(() => {
       this.active=false;
     }, 2750);
+  };
+  toStartPage() {
+    this.navCtrl.popToRoot();
   }
 
 }

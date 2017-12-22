@@ -61,7 +61,7 @@ export class OrderPage implements OnInit{
             // The response body may contain clues as to what went wrong,
             console.log(`Backend returned code ${err.status}, body was: ${err.error}`)
           };
-          this.errorAlert(err);
+          this.errorAlert("Please try again later");
         });
 
   }
