@@ -22,8 +22,6 @@
   <ion-icon name="md-add-circle" color="" (click)="incBottle()"> </ion-icon>
 </ion-chip> -->
 
-</ion-content>
-<ion-footer>
   <ion-item  class="date" no-lines>
     <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="MMM DD, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
 
@@ -37,6 +35,8 @@
       <ion-option  text-center *ngFor="let address of storageservice.data.deliveryAddresses" >{{address}}</ion-option>
     </ion-select>
   </ion-item>
+</ion-content>
+<ion-footer>
  <!-- <img src="./assets/imgs/auto.JPG" style="height: auto; margin-left: auto; margin-right: auto;">-->
   <img *ngIf="active" src="assets/imgs/car1.gif"  style="height: auto;margin-left: auto; margin-right: auto;">
   <img *ngIf="!active" src="assets/imgs/car1-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
