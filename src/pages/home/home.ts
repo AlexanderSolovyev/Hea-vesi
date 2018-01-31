@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams, Platform} from 'ionic-angular';
+import {NavController, NavParams, Platform, LoadingController} from 'ionic-angular';
 import {OrderPage} from "../order/order";
 import {SettingsPage} from "../settings/settings";
 import {StorageService} from "../storage.service";
-
+import { LoginPage } from '../login/login';
+import { AuthProvider } from '../../providers/auth/auth';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,21 +21,20 @@ export class HomePage implements OnInit{
     deliveryAddress: '',
     information: ''
   };
-  data= {
-    firm: '',
-    name: '',
-    phone: '',
-    email: '',
-    vitenumber: '',
-    // deliveryAddresses: []
-  };
-
+//  data: {
+//    name: string,
+//    phone: string,
+//    email: string,
+//  } = this.storageservice.data
+  //deliveryAdresses: string[]= this.storageservice.deliveryAddresses;
   deliveryTimes = [
     "9:00 - 17:00",
     "9:00 - 13:00",
     "13:00 - 17:00",
     "17:00 - 20:00"
   ];
+
+  token: {auth_token: string};
 
   //deliveryAddresses = [
   //  "Liikury 20-25, Tallinn",
@@ -46,20 +46,17 @@ export class HomePage implements OnInit{
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private storageservice: StorageService,
+              private auth: AuthProvider,
+              public loadingCtrl: LoadingController,
               public plt: Platform) {
     this.plt.ready().then (() => {
       this.loadInitial();
+      this.getUserdata();
     })
 
   }
-  ngOnInit(){
+  ngOnInit() {}
 
-
-  }
-
-  ionViewVDidLoad(){
-
-  }
   goToOrder() {
     this.storageservice.saveOrder();
     this.storageservice.order.returnedBottles=this.storageservice.order.bottles;
@@ -91,11 +88,11 @@ export class HomePage implements OnInit{
 
   loadInitial(){
     this.storageservice.loadOrder();
-    this.storageservice.loadData()
+    this.storageservice.loadAddresses()
       .then(
         data => {
-          this.storageservice.data=data;
-          this.order.deliveryAddress = this.storageservice.data.deliveryAddresses[0];
+          this.storageservice.deliveryAddresses=data;
+          this.order.deliveryAddress = this.storageservice.deliveryAddresses[0];
           },
         error => this.navCtrl.push(SettingsPage)
       );
@@ -109,7 +106,39 @@ export class HomePage implements OnInit{
 
   };
   ionViewWillEnter(){
-    this.active=false
-  }
-}
+    this.active=false;
 
+  }
+
+  getUserdata() {
+    this.auth.loadToken()
+      .then((token) => {
+        if (token) {
+          let loading = this.loadingCtrl.create({
+            spinner: 'bubbles',
+            content: 'Load data ...'
+          });
+
+          loading.present();
+          this.auth.getUserdata(token)
+            .subscribe(
+              (res) => {
+                loading.dismiss();
+                this.storageservice.data=res.info;
+                console.log(res);
+            },
+              (err) => {
+                loading.dismiss();
+                if (err.status == 401){
+                  this.auth.removeToken();
+                this.navCtrl.push(LoginPage)
+                }
+                //else (this.getUserdata())
+              })
+        }
+        else {
+          console.log('no token')
+        }
+      })
+    }
+}

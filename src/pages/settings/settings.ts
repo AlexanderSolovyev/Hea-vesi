@@ -20,15 +20,14 @@ export class SettingsPage implements OnInit {
 
   form: FormGroup;
   data = {
-    firm: '',
+    reg_number: '',
     name: '',
     phone: '',
-    email: '',
-    vitenumber: '',
-    deliveryAddresses: []
+    email: ''
 };
     ulitsa: string;
     city: string = 'Tallinn ja Harjumaa';
+    deliveryAddresses =[]
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -40,12 +39,12 @@ export class SettingsPage implements OnInit {
 
 
    addAddress(form1: NgForm) {
-     this.storageservice.data.deliveryAddresses.push(this.ulitsa +', '+ this.city);
+     this.storageservice.deliveryAddresses.push(this.ulitsa +', '+ this.city);
      this.ulitsa='';
      this.city='Tallinn ja Harjumaa';
    }
    decAddress (index) {
-     this.data.deliveryAddresses.splice(index, 1)
+     this.storageservice.deliveryAddresses.splice(index, 1)
    }
 
   ionViewDidLoad() {
@@ -54,8 +53,8 @@ export class SettingsPage implements OnInit {
 
   setBackButtonAction(){
     this.navBar.backButtonClick = () => {
-      this.storageservice.saveData();
-      this.storageservice.order.deliveryAddress = this.storageservice.data.deliveryAddresses[0];
+      this.storageservice.saveAddresses();
+      this.storageservice.order.deliveryAddress = this.storageservice.deliveryAddresses[0];
       this.navCtrl.pop()
     }
   }

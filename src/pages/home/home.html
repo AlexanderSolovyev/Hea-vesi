@@ -32,7 +32,7 @@
   <ion-item text-center class="adres">
     <!--<ion-label> </ion-label> -->
     <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
-      <ion-option  text-center *ngFor="let address of storageservice.data.deliveryAddresses" >{{address}}</ion-option>
+      <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-content>
@@ -42,4 +42,3 @@
   <img *ngIf="!active" src="assets/imgs/car1-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
   <button ion-button full large (click)="goToOrder()" [disabled]="active">TELLI</button>
 </ion-footer>
-

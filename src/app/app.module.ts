@@ -3,29 +3,37 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
+import {FormsModule } from "@angular/forms";
+import {NativeStorage} from "@ionic-native/native-storage";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpModule} from "@angular/http";
+import {ScreenOrientation} from "@ionic-native/screen-orientation";
+
 import { HomePage } from '../pages/home/home';
 import {OrderPage} from "../pages/order/order";
 import {OkPage} from "../pages/ok/ok";
 import {SettingsPage} from "../pages/settings/settings";
-import {FormsModule } from "@angular/forms";
-import {NativeStorage} from "@ionic-native/native-storage";
+import { LoginPage} from '../pages/login/login';
+import { SignupPage} from '../pages/signup/signup';
+import { AuthProvider } from '../providers/auth/auth';
 import {StorageService} from "../pages/storage.service";
-import {HttpModule} from "@angular/http";
-import {ScreenOrientation} from "@ionic-native/screen-orientation";
-
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     OrderPage,
     OkPage,
-    SettingsPage
+    SettingsPage,
+    LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule,
     FormsModule,
     HttpModule
   ],
@@ -35,7 +43,9 @@ import {ScreenOrientation} from "@ionic-native/screen-orientation";
     HomePage,
     OrderPage,
     OkPage,
-    SettingsPage
+    SettingsPage,
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
@@ -43,7 +53,8 @@ import {ScreenOrientation} from "@ionic-native/screen-orientation";
     NativeStorage,
     StorageService,
     ScreenOrientation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}

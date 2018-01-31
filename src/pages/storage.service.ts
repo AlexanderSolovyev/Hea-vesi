@@ -7,15 +7,19 @@ import {NativeStorage} from "@ionic-native/native-storage";
 
 export class StorageService {
   constructor(private  http: Http,
-              private nativeStorage: NativeStorage) {}
+              private nativeStorage: NativeStorage,
+            ) {}
 
-  data = {
-    firm: '',
+  data: {
+    reg_number: string,
+    name: string,
+    phone: string,
+    email: string
+  }={
+    reg_number: '',
     name: '',
     phone: '',
-    email: '',
-    vitenumber: '',
-    deliveryAddresses: []
+    email: ''
   };
   order = {
     bottles: 2,
@@ -25,6 +29,9 @@ export class StorageService {
     deliveryAddress: '',
     information: ''
   };
+
+  deliveryAddresses: any=[];
+
   saveOrder(){
     this.nativeStorage.setItem('order',
       {
@@ -35,11 +42,11 @@ export class StorageService {
     );
 
   };
-  saveData(){
-    this.nativeStorage.setItem('data', this.data)
+  saveAddresses(){
+    this.nativeStorage.setItem('deliveryAdresses', this.deliveryAddresses)
       .then(
-        () =>console.log('data Stored'),
-        error => console.error(' data error',error)
+        () =>console.log('deliveryAdresses Stored'),
+        error => console.error(' deliveryAdresses error',error)
       );
   };
   loadOrder(){
@@ -51,17 +58,16 @@ export class StorageService {
       );
   };
 
-  loadData(){
-    return this.nativeStorage.getItem('data')
+  loadAddresses(){
+    return this.nativeStorage.getItem('deliveryAdresses')
 
   };
   sendOrder(){
     const info = {
-      firm: this.data.firm,
+      reg_number: this.data.reg_number,
       name: this.data.name,
       phone: this.data.phone,
       email: this.data.email,
-      vitenumber: this.data.vitenumber,
       delivery_address: this.order.deliveryAddress,
       delivery_date: (this.order.deliveryDate).split('.')[0],
       delivery_time: this.order.deliveryTime,
@@ -78,7 +84,7 @@ export class StorageService {
     //headers.append("Content-Type", "application/x-www-form-urlencoded");
     //headers.append("Authorization", "Basic ZXhjaDoxMzU3MjQ2OA=="
     // headers.append( "Access-Control-Allow-Origin", "*");
-    return this.http.post('http://212.7.4.74:8443/order/create', info,{headers: headers})
+    return this.http.post('https://212.7.4.74:8443/order/create', info,{headers: headers})
     //return this.http.post('https://fathomless-ridge-64107.herokuapp.com/order/create',info,{headers: headers})
     //return this.http.post('http://80.235.24.138:88/order/create',info,{headers: headers})
   };

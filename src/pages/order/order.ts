@@ -34,12 +34,10 @@ export class OrderPage implements OnInit{
     information: ''
   };
   data ={
-    firm: '',
+    reg_number: '',
     name: '',
     phone: '',
     email: '',
-    vitenumber: '',
-    deliveryAddresses: []
   };
   ngOnInit(){
     this.order=this.storageservice.order;
