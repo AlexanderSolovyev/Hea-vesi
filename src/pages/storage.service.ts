@@ -10,12 +10,12 @@ export class StorageService {
               private nativeStorage: NativeStorage) {}
 
   data = {
-    firm: 'Hea Vesi',
-    name: 'Alexei Ivanov',
-    phone: '+3894848732',
-    email: 'alexei@gmail.com',
-    vitenumber: '39520472640691',
-    deliveryAddresses: ['Liikurry 57/1, Tallinn ja Harjumaa', 'Arbu 14/2, Tallin ja Harjumaa']
+    firm: '',
+    name: '',
+    phone: '',
+    email: '',
+    vitenumber: '',
+    deliveryAddresses: []
   };
   order = {
     bottles: 2,
