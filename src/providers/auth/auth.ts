@@ -13,24 +13,13 @@ export class AuthProvider {
 
   constructor(public http: HttpClient,
               private storage: Storage) {
-    console.log('Hello AuthProvider Provider');
   }
 
   url='http://localhost:3000';
-  token ={ auth_token: ''};
+  //token ={ auth_token: ''};
 
   loadToken() {
     return this.storage.get('token')
-    //   .then((token) => {
-    //  if (token) {
-    //    console.log(token)
-    //    this.token=token;
-    //  }
-    //  else {
-    //    console.log('no token')
-    //    this.token='no token'
-    //  }
-    //});
   }
 
   removeToken(){
@@ -58,4 +47,11 @@ export class AuthProvider {
      .set("Authorization", token);
     return this.http.get(`${this.url}/info`, {headers: headers})
     }
+
+  send(info: any, token: any): Observable<any> {
+    let headers = new HttpHeaders()
+     .set("Content-Type", "application/json")
+     .set("Authorization", token);
+    return this.http.post(`${this.url}/send`, info, {headers: headers})
+  }
 }
