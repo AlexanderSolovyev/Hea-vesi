@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams, Platform, LoadingController} from 'ionic-angular';
+import {NavController, NavParams, Platform, LoadingController, AlertController } from 'ionic-angular';
 import {OrderPage} from "../order/order";
 import {SettingsPage} from "../settings/settings";
 import {StorageService} from "../storage.service";
@@ -44,6 +44,7 @@ export class HomePage implements OnInit{
 
 
   constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
               public navParams: NavParams,
               private storageservice: StorageService,
               private auth: AuthProvider,
