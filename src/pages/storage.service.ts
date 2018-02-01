@@ -58,7 +58,6 @@ export class StorageService {
 
   loadAddresses(){
     return this.nativeStorage.getItem('deliveryAdresses')
-
   };
   //sendOrder(token: any){
 

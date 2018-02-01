@@ -92,10 +92,11 @@ export class HomePage implements OnInit{
     this.storageservice.loadAddresses()
       .then(
         data => {
+
           this.storageservice.deliveryAddresses=data;
           this.order.deliveryAddress = this.storageservice.deliveryAddresses[0];
           },
-        error => this.navCtrl.push(SettingsPage)
+        error => setTimeout(() => { this.navCtrl.push(SettingsPage)}, 1000)
       );
     this.order=this.storageservice.order;
     this.order.deliveryDate=this.deliveryDate;
