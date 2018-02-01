@@ -37,7 +37,8 @@ export class SignupPage {
       },
         (err) => {
           loading.dismiss();
-          this.handleError(`Email has been taked`);}
+          console.log(err);
+          this.handleError(err.error);}
       )
   }
 

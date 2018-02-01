@@ -45,33 +45,13 @@ export class OrderPage implements OnInit{
     this.order=this.storageservice.order;
     this.data=this.storageservice.data;
   }
-  goToOk(){
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-
-    loading.present();
-    this.storageservice.sendOrder()
-      .subscribe(
-        json => {
-          console.log(json);
-          loading.dismiss();
-          this.navCtrl.push(OkPage);
-    },
-        err => {
-          loading.dismiss();
-          this.errorAlert("Please try again later")}
-
-
-      )};
-
       sendUserOrder() {
         this.auth.loadToken()
           .then((token) => {
             if (token) {
               let loading = this.loadingCtrl.create({
                 spinner: 'bubbles',
-                content: 'Load data ...'
+                content: 'Sending ...'
               });
 
               loading.present();
@@ -94,6 +74,7 @@ export class OrderPage implements OnInit{
                 },
                   (err) => {
                     loading.dismiss();
+                    console.log(err);
                     this.errorAlert("Please try again later")
                     }
                     //else (this.getUserdata())

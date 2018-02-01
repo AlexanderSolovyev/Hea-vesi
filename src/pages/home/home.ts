@@ -131,9 +131,13 @@ export class HomePage implements OnInit{
                 loading.dismiss();
                 if (err.status == 401){
                   this.auth.removeToken();
-                this.navCtrl.push(LoginPage)
+                  this.navCtrl.setRoot(LoginPage)
+                    .then(() => this.navCtrl.popToRoot());
                 }
-                //else (this.getUserdata())
+                else {
+                  this.errorAlert(err);
+                  this.getUserdata();
+                }
               })
         }
         else {
@@ -141,4 +145,14 @@ export class HomePage implements OnInit{
         }
       })
     }
+    errorAlert(err) {
+      console.log(err);
+      let alert = this.alertCtrl.create({
+        title: 'Server error',
+        subTitle: err,
+        buttons: ['Try again']
+      });
+      alert.present();
+    }
+
 }

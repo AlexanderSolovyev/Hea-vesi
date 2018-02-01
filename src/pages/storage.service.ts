@@ -1,4 +1,3 @@
-import { Http, Headers} from "@angular/http";
 import {Injectable} from "@angular/core";
 import 'rxjs/add/operator/map';
 import {NativeStorage} from "@ionic-native/native-storage";
@@ -6,8 +5,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
 @Injectable()
 
 export class StorageService {
-  constructor(private  http: Http,
-              private nativeStorage: NativeStorage,
+  constructor( private nativeStorage: NativeStorage,
             ) {}
 
   data: {

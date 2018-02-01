@@ -37,7 +37,8 @@ export class LoginPage {
       token => {
         this.auth.saveToken(token.auth_token);
         loading.dismiss();
-        this.navCtrl.push(HomePage);
+        this.navCtrl.setRoot(HomePage)
+          .then(() => this.navCtrl.popToRoot());
       },
       err => {loading.dismiss();
         this.handleError(err)})

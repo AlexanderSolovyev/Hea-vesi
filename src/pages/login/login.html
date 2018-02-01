@@ -11,7 +11,7 @@
     <ion-list>
       <ion-item>
         <ion-label floating>Email</ion-label>
-        <ion-input type="text" name="email" ngModel required #email="ngModel"
+        <ion-input type="email" name="email" ngModel required #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
       <ion-item class="error-message" *ngIf="email.errors?.required && email.dirty">
