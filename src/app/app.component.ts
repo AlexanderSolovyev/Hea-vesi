@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {ScreenOrientation} from "@ionic-native/screen-orientation";
 
 import { AuthProvider } from '../providers/auth/auth'
-import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
 
@@ -26,12 +26,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
+      //screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
     });
     auth.loadToken()
       .then((token) =>{
         if (token) {
-          this.rootPage=HomePage
+          this.rootPage=TabsPage
         }
         else {
           this.rootPage=LoginPage

@@ -17,6 +17,7 @@ import {OkPage} from "../pages/ok/ok";
 import {SettingsPage} from "../pages/settings/settings";
 import { LoginPage} from '../pages/login/login';
 import { SignupPage} from '../pages/signup/signup';
+import { TabsPage } from '../pages/tabs/tabs';
 import { AuthProvider } from '../providers/auth/auth';
 import {StorageService} from "../pages/storage.service";
 @NgModule({
@@ -27,7 +28,8 @@ import {StorageService} from "../pages/storage.service";
     OkPage,
     SettingsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import {StorageService} from "../pages/storage.service";
     OkPage,
     SettingsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    TabsPage
   ],
   providers: [
     StatusBar,

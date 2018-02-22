@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, ToastController, LoadingController} from 'ionic-angular';
 import {AuthProvider} from "../../providers/auth/auth";
-import {HomePage} from '../home/home'
+import {TabsPage} from '../tabs/tabs'
 import {SignupPage} from '../signup/signup'
 /**
  * Generated class for the LoginPage page.
@@ -37,7 +37,7 @@ export class LoginPage {
       token => {
         this.auth.saveToken(token.auth_token);
         loading.dismiss();
-        this.navCtrl.setRoot(HomePage)
+        this.navCtrl.setRoot(TabsPage)
           .then(() => this.navCtrl.popToRoot());
       },
       err => {loading.dismiss();
