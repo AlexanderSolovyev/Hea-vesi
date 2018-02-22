@@ -5,17 +5,59 @@ page-home {
   //  width: 100%;
   //  align-content: center;
   //}
-  .date {
+  //.date {
    // position: initial;
    // margin-left: 0%;
     //min-width: 100%;
    // align-content: center;
-   text-align: center;
-  }
-  .my-select {
-    min-width: 100%;
+  // text-align: center;
+  //}
+  //.my-select {
+  //  min-width: 100%;
+//}
+  //.car {
+    //display: block;
+  //}
+  .pane {
+  background-image: url('../../assets/imgs/Sunrise_at_viru_bog.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-  .car {
-    display: block;
-  }
+.adres {
+  //margin: 10px;
+  //spadding-left:  10px;
+  background-color: white;
+  opacity: 0.8;
+  border: 1px ;
+  border-radius: 20px;
+  padding-top: 4px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+
+}
+.item {
+  background-color: trasparent;
+  height: 40px;
+}
+.p {
+  font-size: 1.3em;
+  margin-bottom: 0px;
+  padding-left: 40px;
+  color: #6C6960
+}
+.h {
+  padding-left: 40px;
+}
+.my-select {
+  min-width: 100%;
+  padding-right: 40px;
+}
+.bottle {
+  float: right;
+  height: 160px;
+  width: 50%;
+  background-image: url('../../assets/imgs/bottles1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 }

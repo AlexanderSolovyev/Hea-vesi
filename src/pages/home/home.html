@@ -12,16 +12,21 @@
 </ion-header>
 
 
-<ion-content  padding style="text-align:center">
-  <img src="./assets/imgs/bottles1.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
+<ion-content  padding no-bounce class='pane'>
 
- <h2 text-center><span style="color:red;" (click)="decBottle()">-</span>&emsp; {{storageservice.order.bottles}} tk &emsp;<span style="color:green;"(click)="incBottle()">+</span></h2>
-<!-- <ion-chip color='no' style="zoom:1.2;">
-  <ion-icon name="remove" color="danger" (click)="decBottle()" ></ion-icon>
-  <ion-label ><strong style="zoom:1.2;">{{storageservice.order.bottles}} tk </strong></ion-label>
-  <ion-icon name="md-add-circle" color="" (click)="incBottle()"> </ion-icon>
-</ion-chip> -->
 
+<div class='adres'>
+  <p class='p'>Aadress:</p>
+<ion-item text-center class="adres">
+  <!--<ion-label> </ion-label> -->
+  <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
+    <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
+  </ion-select>
+</ion-item>
+</div>
+
+<div class='adres'>
+  <p class='p'>Kuupaev:&emsp;&emsp;&emsp;&emsp;&emsp;Tarneaeg:</p>
   <ion-item  class="date" no-lines>
     <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="DD MMM, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
 
@@ -29,16 +34,23 @@
       <ion-option *ngFor="let delivery of deliveryTimes" >{{delivery}}</ion-option>
     </ion-select>
   </ion-item>
-  <ion-item text-center class="adres">
-    <!--<ion-label> </ion-label> -->
-    <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
-      <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
-    </ion-select>
-  </ion-item>
+</div>
+
 </ion-content>
-<ion-footer>
+<ion-footer padding >
  <!-- <img src="./assets/imgs/auto.JPG" style="height: auto; margin-left: auto; margin-right: auto;">-->
-  <img *ngIf="active" src="assets/imgs/car1.gif"  style="height: auto;margin-left: auto; margin-right: auto;">
-  <img *ngIf="!active" src="assets/imgs/car1-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
-  <button ion-button full large (click)="goToOrder()" [disabled]="active">TELLI</button>
+
+ <div class= 'adres'>
+   <div>
+     <div class='bottle'>
+     </div>
+   <p class='p'>Veepudelite arv:</p>
+   <h1 class='h'><span style="color:red;" (click)="decBottle()" >-</span>&emsp; {{storageservice.order.bottles}}tk &emsp;<span style="color:green;" (click)="incBottle()" >+</span></h1>
+
+ </div>
+ <button ion-button full large (click)="goToOrder()" >TELLI</button>
+ </div>
+ <!--<h2 text-center><span style="color:red;" (click)="decBottle()">-</span>&emsp; {{storageservice.order.bottles}} tk &emsp;<span style="color:green;"(click)="incBottle()">+</span></h2>
+-->
+
 </ion-footer>

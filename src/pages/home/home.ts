@@ -11,7 +11,6 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class HomePage implements OnInit{
 
-  active:boolean = false;
 
   order = {
     bottles: 2 ,
@@ -61,7 +60,7 @@ export class HomePage implements OnInit{
   goToOrder() {
     this.storageservice.saveOrder();
     this.storageservice.order.returnedBottles=this.storageservice.order.bottles;
-    this.carGo();
+    this.navCtrl.push(OrderPage);
 
 
 
@@ -101,14 +100,8 @@ export class HomePage implements OnInit{
     this.order=this.storageservice.order;
     this.order.deliveryDate=this.deliveryDate;
   }
-  carGo(){
-    this.active=true;
-    setTimeout(() =>{ this.navCtrl.push(OrderPage);}, 2100);
 
-
-  };
   ionViewWillEnter(){
-    this.active=false;
 
   }
 
