@@ -28,7 +28,7 @@ export class StorageService {
     information: ''
   };
 
-  deliveryAddresses: any=[];
+  deliveryAddresses: any=['adres'];
 
   saveOrder(){
     this.nativeStorage.setItem('order',

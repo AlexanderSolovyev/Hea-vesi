@@ -25,8 +25,6 @@ export class OrderPage implements OnInit{
               public loadingCtrl: LoadingController) {
   }
 
-  active: boolean=false;
-
   order ={
     bottles: 2 ,
     returnedBottles: 2,
@@ -108,13 +106,6 @@ export class OrderPage implements OnInit{
     alert.present();
   }
   ionViewWillEnter(){
-    this.active=false
   }
-  animGo() {
-    this.active = true;
-    setTimeout(() => {
-      this.sendUserOrder();
-      this.active=false;
-    }, 2050);
-  }
+  
 }

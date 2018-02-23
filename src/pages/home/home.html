@@ -12,12 +12,12 @@
 </ion-header>
 
 
-<ion-content  padding no-bounce class='pane'>
+<ion-content  padding no-bounce class='background-image'>
 
 
-<div class='adres'>
+<div class='radius-panel'>
   <p class='p'>Aadress:</p>
-<ion-item text-center class="adres">
+<ion-item class="radius-panel">
   <!--<ion-label> </ion-label> -->
   <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
     <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
@@ -25,9 +25,9 @@
 </ion-item>
 </div>
 
-<div class='adres'>
+<div class='radius-panel'>
   <p class='p'>Kuupaev:&emsp;&emsp;&emsp;&emsp;&emsp;Tarneaeg:</p>
-  <ion-item  class="date" no-lines>
+  <ion-item  class="date" no-lines class="radius-panel">
     <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="DD MMM, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
 
     <ion-select [(ngModel)]="order.deliveryTime" style="min-width: 50%">
@@ -40,15 +40,16 @@
 <ion-footer padding >
  <!-- <img src="./assets/imgs/auto.JPG" style="height: auto; margin-left: auto; margin-right: auto;">-->
 
- <div class= 'adres'>
+ <div class= 'radius-panel'>
    <div>
      <div class='bottle'>
+       <img src="./assets/imgs/bottles1.png" style="display: block;float: right; width: 100%; height: auto;" >
      </div>
    <p class='p'>Veepudelite arv:</p>
-   <h1 class='h'><span style="color:red;" (click)="decBottle()" >-</span>&emsp; {{storageservice.order.bottles}}tk &emsp;<span style="color:green;" (click)="incBottle()" >+</span></h1>
+   <h2 class='h'><span style="color:red;" (click)="decBottle()" >-</span>&emsp; {{storageservice.order.bottles}}tk &emsp;<span style="color:green;" (click)="incBottle()" >+</span></h2>
 
  </div>
- <button ion-button full large (click)="goToOrder()" >TELLI</button>
+ <button ion-button full large (click)="goToOrder()" class='button'>TELLI</button>
  </div>
  <!--<h2 text-center><span style="color:red;" (click)="decBottle()">-</span>&emsp; {{storageservice.order.bottles}} tk &emsp;<span style="color:green;"(click)="incBottle()">+</span></h2>
 -->

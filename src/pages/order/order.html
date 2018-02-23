@@ -13,29 +13,45 @@
 </ion-header>
 
 
-<ion-content no-padding text-center>
+<ion-content padding >
+<ion-grid class="radius-panel" >
+  <ion-row>
+    <ion-col>
+      <p class='p'>Aadress:</p>
+      <p class='c'>{{order.deliveryAddress}}</p>
+      <p class='p'>Kuupaev:</p>
+      <p class='c'>{{order.deliveryDate | date: "dd MMM,yyyy"}} </p>
+      <p class='p'>Tarneaeg:</p>
+      <p class='c'>{{order.deliveryTime}}</p>
+    </ion-col>
+    <ion-col>
+      <p class='p'>Veepudelite arv:</p>
+      <h3 text-center class=''>{{order.bottles}} tk</h3>
+      <img src="./assets/imgs/bottles1.png" style="display: block;float: right; width: 70%; height: auto;" >
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="radius-panel" >
+  <ion-row>
+    <ion-col col-8>
+      <p class='p'>Tangastan tuhjad pudelit:</p>
+      <h2 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> &emsp;{{order.returnedBottles}} tk &emsp;<span style="color:green;" (click)="incReturnedBottle()">+</span></h2>
+    </ion-col>
+    <ion-col>
+      <img  class='img' src="./assets/imgs/bottle2.png" style="display: block; width: 50%; height: auto;" >
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
-  <p ><strong>Tagastan tühjad puudelid:</strong></p>
 
-  <!-- <ion-chip color='no' style="zoom:1.2;">
-    <ion-icon name="remove" color="danger" (click)="decReturnedBottle()"></ion-icon>
-    <ion-label ><strong style="zoom:1.2;">{{order.returnedBottles}} tk </strong></ion-label>
-    <ion-icon name="add" color="secondary" (click)="incReturnedBottle()"> </ion-icon>
-  </ion-chip> -->
-
-  <h2 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> &emsp;{{order.returnedBottles}} tk &emsp;<span style="color:green;" (click)="incReturnedBottle()">+</span></h2>
-  <p ><strong>TELLITUD:</strong></p>
-    <p>{{order.bottles}} puudelit</p>
-    <p>{{order.deliveryAddress}}</p>
-    <p>{{order.deliveryDate | date: "dd MMM,yyyy"}} &emsp; {{order.deliveryTime}}</p>
-</ion-content>
-<ion-footer>
-  <ion-item>
-    <ion-icon name="create" color="" item-start></ion-icon>
-    <ion-input placeholder="Lisainfo" [(ngModel)]="order.information"></ion-input>
+<div class='radius-panel'>
+  <ion-item class='radius-panel' no-lines >
+    <ion-icon name="ios-create-outline" color="" item-start></ion-icon>
+    <ion-input placeholder="Lisainfo:" [(ngModel)]="order.information"></ion-input>
   </ion-item>
-  <img *ngIf="!active" src="assets/imgs/plane-1.png" style="height: auto; margin-left: auto; margin-right: auto;">
-  <img *ngIf="active" src="assets/imgs/plane-1.gif" style="height: auto; margin-left: auto; margin-right: auto;">
+  </div>
+  </ion-content>
+  <ion-footer >
+  <button ion-button color="primary" full large (click)="sendUserOrder()" [disabled]="active">KINNITA</button>
 
-  <button ion-button color="secondary" full large (click)="animGo()" [disabled]="active">KINNITA</button>
 </ion-footer>

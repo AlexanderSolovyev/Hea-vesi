@@ -18,29 +18,29 @@ page-home {
   //.car {
     //display: block;
   //}
-  .pane {
-  background-image: url('../../assets/imgs/Sunrise_at_viru_bog.jpg');
+  .background-image {
+  background-image: url('../assets/imgs/sunrise_at_viru_bog.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
-.adres {
-  //margin: 10px;
-  //spadding-left:  10px;
+.radius-panel {
   background-color: white;
   opacity: 0.8;
   border: 1px ;
   border-radius: 20px;
-  padding-top: 4px;
-  padding-bottom: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   margin-bottom: 20px;
 
 }
 .item {
-  background-color: trasparent;
+  background-color: transparent;
   height: 40px;
+  font-size: 1em;
 }
 .p {
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 10px;
   margin-bottom: 0px;
   padding-left: 40px;
   color: #6C6960
@@ -54,10 +54,13 @@ page-home {
 }
 .bottle {
   float: right;
-  height: 160px;
-  width: 50%;
-  background-image: url('../../assets/imgs/bottles1.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 40%;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+.button {
+  border: 1px ;
+  border-radius: 0px 0px 20px 20px;
+  opacity: 1.0;
 }
 }
