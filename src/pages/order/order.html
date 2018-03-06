@@ -33,7 +33,7 @@
 </ion-grid>
 <ion-grid class="radius-panel" >
   <ion-row>
-    <ion-col col-8>
+    <ion-col col-9>
       <p class='p'>Tangastan tuhjad pudelit:</p>
       <h2 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> &emsp;{{order.returnedBottles}} tk &emsp;<span style="color:green;" (click)="incReturnedBottle()">+</span></h2>
     </ion-col>
@@ -46,7 +46,7 @@
 
 <div class='radius-panel'>
   <ion-item class='radius-panel' no-lines >
-    <ion-icon name="ios-create-outline" color="" item-start></ion-icon>
+    <ion-icon name="ios-create-outline" color="" item-end></ion-icon>
     <ion-input placeholder="Lisainfo:" [(ngModel)]="order.information"></ion-input>
   </ion-item>
   </div>

@@ -6,34 +6,37 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content class='background-color' padding>
+  <img src="./assets/imgs/logo.png" style="width: 50%; height: auto; margin-left: auto; margin-right: auto;">
   <form #form="ngForm" (ngSubmit)="login(form.value)" novalidate>
-    <ion-list>
-      <ion-item>
+    <ion-list no-lines >
+      <div class ='radius-panel'>
+      <ion-item  >
         <ion-label color='primary' stacked>Email</ion-label>
-        <ion-input type="email" name="email" ngModel required #email="ngModel"
+        <ion-input type="email" name="email" placeholder='Type your email address here' ngModel required #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
-      <ion-item class="error-message" *ngIf="email.errors?.required && email.dirty">
+      <ion-item color='danger' class="error-message" *ngIf="email.errors?.required && email.dirty">
         Email is required
       </ion-item>
 
       <ion-item>
-        <ion-label color='primary' stacked>Password</ion-label>
-        <ion-input type="password" name="password" ngModel required #password="ngModel"
+        <ion-label color='primary' stacked >Password</ion-label>
+        <ion-input type="password" name="password" placeholder='Input secure password' ngModel required #password="ngModel"
                    [class.invalid]="password.errors && password.dirty"></ion-input>
       </ion-item>
-      <ion-item class="error-message" *ngIf="password.errors?.required && password.dirty">
+      <ion-item   class="error-message" *ngIf="password.errors?.required && password.dirty">
         Password is required
       </ion-item>
 
       <div padding>
         <button ion-button color="primary" block type="submit" [disabled]="!form.valid">Login</button>
       </div>
-
       <div padding>
         <button ion-button color="secondary" block type="button" (click)="signup()">Sign up</button>
       </div>
+    </div>
+
     </ion-list>
   </form>
 

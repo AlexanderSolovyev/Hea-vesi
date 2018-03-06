@@ -1,5 +1,28 @@
 page-signup {
   h3 {
     text-align: center;
+    color: blue;
+  }
+  .background-color {
+    background-color: #79acdb;
+  }
+
+  .radius-panel {
+    background-color: white;
+    opacity: 0.8;
+    border: 1px ;
+    border-radius: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 20px;
+
+  }
+  .item {
+    background-color: transparent;
+  //  height: 40px;
+    font-size: 1em;
+  }
+  .error-message {
+    color: red;
   }
 }

@@ -22,7 +22,7 @@ page-order {
     padding-top: 0px;
     margin-bottom: 0px;
     padding-left: 20px;
-    height: 10px;
+    //height: 24px;
   }
   .item {
     background-color: #f0f2f1;
@@ -32,6 +32,8 @@ page-order {
   }
   .img {
     padding-top: 20px;
+    float: right;
+  //  padding-right: 20px;
   }
 
 }
