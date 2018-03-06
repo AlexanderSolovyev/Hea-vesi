@@ -10,7 +10,7 @@
   <form #form="ngForm" (ngSubmit)="login(form.value)" novalidate>
     <ion-list>
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label color='primary' stacked>Email</ion-label>
         <ion-input type="email" name="email" ngModel required #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
@@ -19,7 +19,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Password</ion-label>
+        <ion-label color='primary' stacked>Password</ion-label>
         <ion-input type="password" name="password" ngModel required #password="ngModel"
                    [class.invalid]="password.errors && password.dirty"></ion-input>
       </ion-item>

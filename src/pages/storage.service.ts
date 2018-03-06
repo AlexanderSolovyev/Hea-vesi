@@ -28,7 +28,7 @@ export class StorageService {
     information: ''
   };
 
-  deliveryAddresses: any=['Liikury 40/7, Tallinn ja Harumaaa'];
+  deliveryAddresses: any=[];
 
   saveOrder(){
     this.nativeStorage.setItem('order',

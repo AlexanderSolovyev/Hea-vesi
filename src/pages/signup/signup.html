@@ -12,7 +12,7 @@
     <ion-list>
 
       <ion-item>
-        <ion-label floating>RegNumber</ion-label>
+        <ion-label color='primary' stacked>RegNumber</ion-label>
         <ion-input type="number" name="reg_number" ngModel required #name="ngModel"
                  [class.invalid]="name.errors && name.dirty"></ion-input>
       </ion-item>
@@ -22,7 +22,7 @@
 
 
       <ion-item>
-        <ion-label floating>Name</ion-label>
+        <ion-label color='primary' stacked>Name</ion-label>
         <ion-input type="text" name="name" ngModel required #name="ngModel"
                  [class.invalid]="name.errors && name.dirty"></ion-input>
       </ion-item>
@@ -31,7 +31,7 @@
     </ion-item>
 
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label color='primary' stacked>Email</ion-label>
         <ion-input type="email" name="email" ngModel required email #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
@@ -43,7 +43,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Phone</ion-label>
+        <ion-label color='primary' stacked>Phone</ion-label>
         <ion-input type="tel" name="phone" ngModel required #username="ngModel"
                    [class.invalid]="username.errors && username.dirty"></ion-input>
       </ion-item>

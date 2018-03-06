@@ -3,6 +3,7 @@ import {NavController, ToastController, LoadingController} from 'ionic-angular';
 import {AuthProvider} from "../../providers/auth/auth";
 import {TabsPage} from '../tabs/tabs'
 import {SignupPage} from '../signup/signup'
+import {StorageService} from "../storage.service";
 /**
  * Generated class for the LoginPage page.
  *
@@ -19,6 +20,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public toast: ToastController,
               public loadingCtrl: LoadingController,
+              public storageservice: StorageService,
               public auth: AuthProvider) {
   }
 
@@ -37,8 +39,11 @@ export class LoginPage {
       token => {
         this.auth.saveToken(token.auth_token);
         loading.dismiss();
-        this.navCtrl.setRoot(TabsPage)
-          .then(() => this.navCtrl.popToRoot());
+        //this.navCtrl.setRoot(TabsPage)
+        //  .then(() => this.navCtrl.popToRoot());
+        console.log(token);
+        this.getUser(token)
+        //
       },
       err => {loading.dismiss();
         this.handleError(err)})
@@ -64,4 +69,35 @@ export class LoginPage {
 
     toast.present();
   }
+  getUser(token: any) {
+      //let loading = this.loadingCtrl.create({
+      //  spinner: 'bubbles',
+      //  content: 'Load data ...'
+      //});
+
+      //loading.present();
+      this.auth.getUserdata(token.auth_token)
+        .subscribe(
+          (res) => {
+            //loading.dismiss();
+            console.log(res);
+            this.storageservice.data=res.info;
+            this.navCtrl.setRoot(TabsPage)
+            .then(() => this.navCtrl.popToRoot());;
+        },
+          (err) => {
+            //loading.dismiss();
+            if (err.status == 401){
+              this.auth.removeToken();
+              this.navCtrl.setRoot(LoginPage)
+              .then(() => this.navCtrl.popToRoot());;
+
+            //  this.navCtrl.setRoot(LoginPage)
+            //    .then(() => this.navCtrl.popToRoot());
+            }
+            else {
+              //this.getUser();
+            }
+          })
+        }
 }

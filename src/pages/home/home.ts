@@ -51,7 +51,7 @@ export class HomePage implements OnInit{
               public plt: Platform) {
     this.plt.ready().then (() => {
       this.loadInitial();
-      this.getUserdata();
+    //  this.getUserdata();
     })
 
   }
@@ -91,12 +91,17 @@ export class HomePage implements OnInit{
     this.storageservice.loadAddresses()
       .then(
         data => {
-
+          console.log(data);
           this.storageservice.deliveryAddresses=data;
           this.order.deliveryAddress = this.storageservice.deliveryAddresses[0];
-          },
-        error => setTimeout(() => { this.navCtrl.push(SettingsPage)}, 1000)
-      );
+        },
+        error => {console.log(error)})
+        .then(
+          data => {
+            if (this.storageservice.deliveryAddresses.length < 1){ this.navCtrl.push(SettingsPage)}
+            else { this.order.deliveryAddress = this.storageservice.deliveryAddresses[0]; }
+          });
+
     this.order=this.storageservice.order;
     this.order.deliveryDate=this.deliveryDate;
   }
@@ -105,41 +110,7 @@ export class HomePage implements OnInit{
 
   }
 
-  getUserdata() {
-    this.auth.loadToken()
-      .then((token) => {
-        if (token) {
-          let loading = this.loadingCtrl.create({
-            spinner: 'bubbles',
-            content: 'Load data ...'
-          });
 
-          loading.present();
-          this.auth.getUserdata(token)
-            .subscribe(
-              (res) => {
-                loading.dismiss();
-                this.storageservice.data=res.info;
-                console.log(res);
-            },
-              (err) => {
-                loading.dismiss();
-                if (err.status == 401){
-                  this.auth.removeToken();
-                  this.navCtrl.setRoot(LoginPage)
-                    .then(() => this.navCtrl.popToRoot());
-                }
-                else {
-                  this.errorAlert(err);
-                  this.getUserdata();
-                }
-              })
-        }
-        else {
-          console.log('no token')
-        }
-      })
-    }
     errorAlert(err) {
       console.log(err);
       let alert = this.alertCtrl.create({
