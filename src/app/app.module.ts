@@ -20,6 +20,7 @@ import { SignupPage} from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthProvider } from '../providers/auth/auth';
 import {StorageService} from "../pages/storage.service";
+import { InfoPage } from '../pages/info/info';
 @NgModule({
   declarations: [
     MyApp,
@@ -29,6 +30,7 @@ import {StorageService} from "../pages/storage.service";
     SettingsPage,
     LoginPage,
     SignupPage,
+    InfoPage,
     TabsPage
   ],
   imports: [
@@ -48,6 +50,7 @@ import {StorageService} from "../pages/storage.service";
     SettingsPage,
     LoginPage,
     SignupPage,
+    InfoPage,
     TabsPage
   ],
   providers: [
