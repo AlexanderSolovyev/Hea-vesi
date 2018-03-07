@@ -3,8 +3,6 @@ import {NavController, NavParams, Platform, LoadingController, AlertController }
 import {OrderPage} from "../order/order";
 import {SettingsPage} from "../settings/settings";
 import {StorageService} from "../storage.service";
-import { LoginPage } from '../login/login';
-import { AuthProvider } from '../../providers/auth/auth';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -46,7 +44,6 @@ export class HomePage implements OnInit{
               public alertCtrl: AlertController,
               public navParams: NavParams,
               private storageservice: StorageService,
-              private auth: AuthProvider,
               public loadingCtrl: LoadingController,
               public plt: Platform) {
     this.plt.ready().then (() => {

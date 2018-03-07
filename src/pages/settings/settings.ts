@@ -40,6 +40,8 @@ export class SettingsPage implements OnInit {
 
    addAddress(form1: NgForm) {
      this.storageservice.deliveryAddresses.push(this.ulitsa +', '+ this.city);
+     this.storageservice.saveAddresses();
+     this.storageservice.order.deliveryAddress = this.storageservice.deliveryAddresses[0];
      this.ulitsa='';
      this.city='Tallinn ja Harjumaa';
    }
@@ -53,8 +55,7 @@ export class SettingsPage implements OnInit {
 
   setBackButtonAction(){
     this.navBar.backButtonClick = () => {
-      this.storageservice.saveAddresses();
-      this.storageservice.order.deliveryAddress = this.storageservice.deliveryAddresses[0];
+
       this.navCtrl.pop()
     }
   }
