@@ -16,9 +16,10 @@ export class OkPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  
-  toStartPage() {
+
+  gotoroot() {
     this.navCtrl.popToRoot();
   }
+
 
 }
