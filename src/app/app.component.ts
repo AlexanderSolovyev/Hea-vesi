@@ -14,14 +14,14 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any;
 
   constructor(platform: Platform,
       statusBar: StatusBar,
       splashScreen: SplashScreen,
       screenOrientation: ScreenOrientation,
       public storageservice: StorageService,
-      loadingCtrl: LoadingController,
+      public loadingCtrl: LoadingController,
       public auth: AuthProvider
       ) {
     platform.ready().then(() => {
@@ -29,7 +29,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      //screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
+      screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
     });
     auth.loadToken()
       .then((token) =>{
@@ -43,21 +43,21 @@ export class MyApp {
   }
 
   getUser(token: any) {
-      //let loading = this.loadingCtrl.create({
-      //  spinner: 'bubbles',
-      //  content: 'Load data ...'
-      //});
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Load data ...'
+      });
 
-      //loading.present();
+      loading.present();
       this.auth.getUserdata(token)
         .subscribe(
           (res) => {
-            //loading.dismiss();
+            loading.dismiss();
             this.storageservice.data=res.info;
             this.rootPage=TabsPage;
         },
           (err) => {
-            //loading.dismiss();
+            loading.dismiss();
             if (err.status == 401){
               this.auth.removeToken();
               this.rootPage=LoginPage;
