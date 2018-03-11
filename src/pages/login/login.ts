@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {NavController, ToastController, LoadingController} from 'ionic-angular';
 import {AuthProvider} from "../../providers/auth/auth";
-import {TabsPage} from '../tabs/tabs'
-import {SignupPage} from '../signup/signup'
+import {TabsPage} from '../tabs/tabs';
+import {SignupPage} from '../signup/signup';
+import {RememberPage} from '../remember/remember';
 import {StorageService} from "../storage.service";
 /**
  * Generated class for the LoginPage page.
@@ -68,6 +69,9 @@ export class LoginPage {
     });
 
     toast.present();
+  }
+  remember(){
+    this.navCtrl.push(RememberPage);
   }
   getUser(token: any) {
       //let loading = this.loadingCtrl.create({

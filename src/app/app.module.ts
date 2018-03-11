@@ -21,6 +21,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AuthProvider } from '../providers/auth/auth';
 import {StorageService} from "../pages/storage.service";
 import { InfoPage } from '../pages/info/info';
+import {RememberPage} from '../pages/remember/remember';
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +32,7 @@ import { InfoPage } from '../pages/info/info';
     LoginPage,
     SignupPage,
     InfoPage,
+    RememberPage,
     TabsPage
   ],
   imports: [
@@ -51,6 +53,7 @@ import { InfoPage } from '../pages/info/info';
     LoginPage,
     SignupPage,
     InfoPage,
+    RememberPage,
     TabsPage
   ],
   providers: [
