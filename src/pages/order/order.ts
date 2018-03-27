@@ -24,6 +24,12 @@ export class OrderPage implements OnInit{
               public auth: AuthProvider,
               public loadingCtrl: LoadingController) {
   }
+  deliveryTimes = [
+    "9:00 - 17:00",
+    "9:00 - 13:00",
+    "13:00 - 17:00",
+    "17:00 - 20:00"
+  ];
 
   order ={
     bottles: 2 ,
@@ -39,10 +45,27 @@ export class OrderPage implements OnInit{
     phone: '',
     email: '',
   };
+  invoice = 'tellin';
+  deliveryTime = this.deliveryTimes[0];
+  minDate=this.calculateTomorrow();
+  deliveryDate=this.minDate;
+
+  calculateTomorrow() {
+    let d = new Date();
+    let nd = new Date(d.setDate(d.getDate()+1));
+    return nd.toISOString();
+  }
+
   ngOnInit(){
     this.order=this.storageservice.order;
     this.data=this.storageservice.data;
   }
+
+  sendUserOrder1() {
+    this.errorAlert("Пока не работает")
+  }
+
+
       sendUserOrder() {
         this.auth.loadToken()
           .then((token) => {
@@ -107,5 +130,5 @@ export class OrderPage implements OnInit{
   }
   ionViewWillEnter(){
   }
-  
+
 }

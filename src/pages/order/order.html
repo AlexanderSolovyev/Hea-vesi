@@ -7,52 +7,69 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center>Online tellimus</ion-title>
+    <ion-title text-center>{{storageservice.data.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding >
-<ion-grid class="radius-panel" >
-  <ion-row>
-    <ion-col>
-      <p class='p'>Aadress:</p>
-      <p class='c'>{{order.deliveryAddress}}</p>
-      <p class='p'>Kuupaev:</p>
-      <p class='c'>{{order.deliveryDate | date: "dd MMM,yyyy"}} </p>
-      <p class='p'>Tarneaeg:</p>
-      <p class='c'>{{order.deliveryTime}}</p>
-    </ion-col>
-    <ion-col>
-      <p class='p'>Veepudelite arv:</p>
-      <h3 text-center class=''>{{order.bottles}} tk</h3>
-      <img src="./assets/imgs/bottles1.png" style="display: block;float: right; width: 70%; height: auto;" >
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<ion-grid class="radius-panel" >
-  <ion-row>
-    <ion-col col-9>
-      <p class='p'>Tangastan tuhjad pudelit:</p>
-      <h2 text-center><span style="color:red;"(click)="decReturnedBottle()">-</span> &emsp;{{order.returnedBottles}} tk &emsp;<span style="color:green;" (click)="incReturnedBottle()">+</span></h2>
-    </ion-col>
-    <ion-col>
-      <img  class='img' src="./assets/imgs/bottle2.png" style="display: block; width: 50%; height: auto;" >
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-content no-padding >
+
+      <p class='p'>AADRESS</p>
+      <ion-item no-lines>
+      <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
+        <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+      <p class='p'>KUUPäEV</p>
+      <ion-item  class="date" no-lines >
+        <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="DD MMM, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
+
+        <ion-select [(ngModel)]="order.deliveryTime" style="min-width: 50%">
+          <ion-option *ngFor="let delivery of deliveryTimes" >{{delivery}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <p class='p'>LISA INFO</p>
+      <ion-item  no-lines >
+        <!--<ion-icon name="ios-create-outline" color="" item-end></ion-icon> -->
+        <ion-input placeholder="Fonolukk '101'" [(ngModel)]="order.information"></ion-input>
+      </ion-item>
+      <p class='p'>TELLITUD TOOTED</p>
+      <div padding>
+      <ion-segment [(ngModel)]="invoice">
+        <ion-segment-button value="tellin">
+      Tellin
+      </ion-segment-button>
+      <ion-segment-button value="tagastan">
+      Tagastan
+      </ion-segment-button>
+    </ion-segment>
+    </div>
+    <div [ngSwitch]="invoice" padding>
+        <ion-list *ngSwitchCase="'tellin'" no-lines>
+            <ion-item>
+              Lavazza Qualita Oro
+              <strong  item-end>2 tk </strong>
+            </ion-item>
+      </ion-list>
+      <ion-item *ngSwitchCase="'tagastan'" no-lines>
+        Pudel
+            <ion-buttons item-end ion-button outline>
+            <button  clear ion-button (click)="incReturnedBottle()">+</button>
+            <button  clear ion-button (click)="decReturnedBottle()">-</button>
+          </ion-buttons >
+            <strong item-end>{{order.returnedBottles}} tk</strong>
+
+    </ion-item>
+    </div>
 
 
-<div class='radius-panel'>
-  <ion-item class='radius-panel' no-lines >
-    <ion-icon name="ios-create-outline" color="" item-end></ion-icon>
-    <ion-input placeholder="Lisainfo:" [(ngModel)]="order.information"></ion-input>
-  </ion-item>
-  <button ion-button color="primary" full large (click)="sendUserOrder()" [disabled]="active">KINNITA</button>
 
-  </div>
+
+
+
+<div padding>
+    <button class='butt' ion-button color="primary" full large (click)="sendUserOrder1()" [disabled]="active">Kinnita tellimus</button>
+</div>
   </ion-content>
-  <ion-footer >
-
-</ion-footer>

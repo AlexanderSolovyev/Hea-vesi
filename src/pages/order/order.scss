@@ -10,34 +10,41 @@ page-order {
 
   }
   .p {
-    font-size: 1em;
-    padding-top: 0px;
-    margin-bottom: 0px;
-    padding-left: 20px;
+    //font-size: 1em;
+    padding-top: 8pt;
+    //margin-bottom: 0px;
+    padding-left: 25pt;
     color: #6C6960;
-    height: 4px;
+    background-color: #efeff4;
+    height: 28pt;
+    margin: 0;
   }
   .c {
-    font-size: 1em;
+    //font-size: 1em;
     padding-top: 0px;
     margin-bottom: 0px;
     padding-left: 20px;
     //height: 24px;
   }
   .item {
-    background-color: #f0f2f1;
-    height: 70px;
-    font-size: 1em;
-    padding-left: 20px;
+    margin: 0;
+    height: 40px;
+    //font-size: 1em;
+    //line-height: 5px;
+    //padding-left: 20pt;
+  }
+  .my-select {
+    min-width: 100%;
+    padding-right: 40px;
   }
   .img {
     padding-top: 20px;
     float: right;
   //  padding-right: 20px;
   }
-  .button {
+  .butt {
     border: 1px ;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 10px;
     opacity: 1.0;
   }
 

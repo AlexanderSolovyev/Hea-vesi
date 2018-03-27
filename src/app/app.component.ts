@@ -29,7 +29,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
+      //screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
     });
     auth.loadToken()
       .then((token) =>{

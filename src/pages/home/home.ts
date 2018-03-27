@@ -9,7 +9,7 @@ import {StorageService} from "../storage.service";
 })
 export class HomePage implements OnInit{
 
-
+  itemslist='tooted';
   order = {
     bottles: 2 ,
     returnedBottles: 2,
