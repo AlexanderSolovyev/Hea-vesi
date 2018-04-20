@@ -1,28 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+  <!--  <ion-title>
      {{storageservice.data.name}}
     </ion-title>
+  -->
   <!--   <ion-buttons end>
      <button ion-button icon-only (click)="GoToSettings()">
         <ion-icon name="options"></ion-icon>
       </button>
     </ion-buttons> -->
+    <div padding>
+    <ion-segment [(ngModel)]="itemslist">
+      <ion-segment-button value="tooted">
+    Tooted
+    </ion-segment-button>
+    <ion-segment-button value="rent">
+    Rent
+    </ion-segment-button>
+    </ion-segment>
+    </div>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content  no-padding >
-  <div padding>
-  <ion-segment [(ngModel)]="itemslist">
-    <ion-segment-button value="tooted">
-  Tooted
-  </ion-segment-button>
-  <ion-segment-button value="rent">
-  Rent
-  </ion-segment-button>
-  </ion-segment>
-  </div>
+
   <div [ngSwitch]="itemslist">
   <ion-list *ngSwitchCase="'tooted'">
     <ion-item>
