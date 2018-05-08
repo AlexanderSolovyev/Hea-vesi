@@ -49,6 +49,8 @@ export class OrderPage implements OnInit{
   deliveryTime = this.deliveryTimes[0];
   minDate=this.calculateTomorrow();
   deliveryDate=this.minDate;
+  goods = [];
+  order_goods= [];
 
   calculateTomorrow() {
     let d = new Date();
@@ -59,6 +61,9 @@ export class OrderPage implements OnInit{
   ngOnInit(){
     this.order=this.storageservice.order;
     this.data=this.storageservice.data;
+    this.goods=this.storageservice.goods;
+    this.order_goods = this.goods.filter((good) =>(good.quantity>0));
+    console.log(this.order_goods);
   }
 
   sendUserOrder1() {
@@ -66,55 +71,54 @@ export class OrderPage implements OnInit{
   }
 
 
-      sendUserOrder() {
-        this.auth.loadToken()
-          .then((token) => {
-            if (token) {
-              let loading = this.loadingCtrl.create({
-                spinner: 'bubbles',
-                content: 'Sending ...'
-              });
+  sendUserOrder() {
+    const info = {
+      bottles: this.storageservice.order.bottles,
+      returned_bottles: this.storageservice.order.returnedBottles,
+      delivery_address: this.storageservice.order.deliveryAddress,
+      delivery_date: (this.storageservice.order.deliveryDate).split('.')[0],
+      delivery_time: this.storageservice.order.deliveryTime,
+      information: this.storageservice.order.information,
+      goods: this.order_goods
+    };
+    this.storageservice.saveOrder();
 
-              loading.present();
-
-              const info = {
-                bottles: this.storageservice.order.bottles,
-                returned_bottles: this.storageservice.order.returnedBottles,
-                delivery_address: this.storageservice.order.deliveryAddress,
-                delivery_date: (this.storageservice.order.deliveryDate).split('.')[0],
-                delivery_time: this.storageservice.order.deliveryTime,
-                information: this.storageservice.order.information
-              };
-              console.log(info);
-              this.auth.send(info,token)
-                .subscribe(
-                  (res) => {
-                    loading.dismiss();
-                    this.navCtrl.push(OkPage);
-                    console.log(res);
-                },
-                  (err) => {
-                    loading.dismiss();
-                    console.log(err);
-                    this.errorAlert("Please try again later")
-                    }
-                    //else (this.getUserdata())
-                  )
-            }
-            else {
-              console.log('no token')
-            }
-          })
+    this.auth.loadToken()
+      .then((token) => {
+        if (token) {
+          let loading = this.loadingCtrl.create({
+            spinner: 'bubbles',
+            content: 'Sending ...'
+          });
+          loading.present();
+          console.log(info);
+          this.auth.send(info,token)
+            .subscribe(
+              (res) => {
+                loading.dismiss();
+                this.navCtrl.push(OkPage);
+                console.log(res);
+            },
+              (err) => {
+                loading.dismiss();
+                console.log(err);
+                this.errorAlert("Please try again later")
+                }
+                //else (this.getUserdata())
+              )
         }
-
-
-
+        else {
+          console.log('no token')
+        }
+      })
+    }
 
   decReturnedBottle(){
     if (this.order.returnedBottles > 0) {
       this.order.returnedBottles = this.order.returnedBottles - 1;
     };
   }
+
   incReturnedBottle() {
     this.order.returnedBottles = this.order.returnedBottles + 1;
   };
@@ -128,6 +132,7 @@ export class OrderPage implements OnInit{
     });
     alert.present();
   }
+
   ionViewWillEnter(){
   }
 

@@ -8,6 +8,7 @@ import { Observable} from "rxjs";
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
 @Injectable()
 export class AuthProvider {
 
@@ -16,6 +17,7 @@ export class AuthProvider {
   }
 
   url='http://212.7.4.74:8443';
+  //url='http://192.168.1.34:3000';
   //token ={ auth_token: ''};
 
   loadToken() {
@@ -46,7 +48,14 @@ export class AuthProvider {
      .set("Content-Type", "application/json")
      .set("Authorization", token);
     return this.http.get(`${this.url}/info`, {headers: headers})
-    }
+  }
+
+  getGoods(token: any): Observable<any> {
+      let headers = new HttpHeaders()
+       .set("Content-Type", "application/json")
+       .set("Authorization", token);
+      return this.http.get(`${this.url}/goods`, {headers: headers})
+  }
 
   send(info: any, token: any): Observable<any> {
     let headers = new HttpHeaders()

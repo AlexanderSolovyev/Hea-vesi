@@ -1,14 +1,5 @@
 <ion-header>
   <ion-navbar>
-  <!--  <ion-title>
-     {{storageservice.data.name}}
-    </ion-title>
-  -->
-  <!--   <ion-buttons end>
-     <button ion-button icon-only (click)="GoToSettings()">
-        <ion-icon name="options"></ion-icon>
-      </button>
-    </ion-buttons> -->
     <div padding>
     <ion-segment [(ngModel)]="itemslist">
       <ion-segment-button value="tooted">
@@ -22,11 +13,10 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content  no-padding >
-
   <div [ngSwitch]="itemslist">
   <ion-list *ngSwitchCase="'tooted'">
+
     <ion-item>
     <ion-row>
       <ion-col col-3>
@@ -35,128 +25,48 @@
         </ion-thumbnail>
       </ion-col>
       <ion-col col-4>
-        HeaVesi 19L
+        <h2>Hea Vesi 19L</h2>
         <p>4€</p>
       </ion-col>
       <ion-col col-5>
-        <h2 text-right> 2 tk </h2>
+        <h2 text-right>{{order.bottles}} tk </h2>
         <ion-buttons class='bug' ion-button outline float-end>
-          <button  class ='bu'outline ion-button icon-only>
+          <button  class ='bu'outline ion-button icon-only (click)="decBottles()">
             <ion-icon name='ios-remove-outline'></ion-icon>
           </button>
-
-          <button class='bu'outline ion-button icon-only>
+          <button class='bu'outline ion-button icon-only (click)="incBottles()">
             <ion-icon name='ios-add-outline'></ion-icon>
           </button>
         </ion-buttons>
       </ion-col>
     </ion-row>
+    </ion-item>
+
+    <ion-item *ngFor="let good of goods">
+    <ion-row>
+      <ion-col col-3>
+        <ion-thumbnail>
+          <img src="http://212.7.4.74:8443/goods/{{good.id}}">
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col col-4>
+        {{good.name}}
+        <p> </p>
+      </ion-col>
+      <ion-col col-5>
+        <h2 text-right> {{good.quantity}} tk </h2>
+        <ion-buttons class='bug' ion-button outline float-end  >
+          <button  class ='bu'outline ion-button icon-only
+           (click)="decQuantity(good)">
+            <ion-icon name='ios-remove-outline' ></ion-icon>
+          </button>
+          <button class='bu'outline ion-button icon-only (click)="incQuantity(good)" >
+            <ion-icon name='ios-add-outline' ></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
   </ion-item>
-
-  <ion-item>
-  <ion-row>
-    <ion-col col-3>
-      <ion-thumbnail>
-        <img src="./assets/imgs/PastedGraphic-6 Copy.png">
-      </ion-thumbnail>
-    </ion-col>
-    <ion-col col-4>
-      Lavazza Qualita Oro
-      <p>17.90€</p>
-    </ion-col>
-    <ion-col col-5>
-      <h2 text-right> 2 tk </h2>
-      <ion-buttons class='bug' ion-button outline float-end>
-        <button  class ='bu'outline ion-button icon-only>
-          <ion-icon name='ios-remove-outline'></ion-icon>
-        </button>
-
-        <button class='bu'outline ion-button icon-only>
-          <ion-icon name='ios-add-outline'></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-col>
-  </ion-row>
-</ion-item>
-
-<ion-item>
-<ion-row>
-  <ion-col col-3>
-    <ion-thumbnail>
-      <img src="./assets/imgs/supercrema copy 4.png">
-    </ion-thumbnail>
-  </ion-col>
-  <ion-col col-4>
-    <h2>Lavazza Qualita Oro</h2>
-    <p>17.90€</p>
-  </ion-col>
-  <ion-col col-5>
-    <h2 text-right> 0 tk </h2>
-    <ion-buttons class='bug' ion-button outline float-end>
-      <button  class ='bu'outline ion-button icon-only>
-        <ion-icon name='ios-remove-outline'></ion-icon>
-      </button>
-
-      <button class='bu'outline ion-button icon-only>
-        <ion-icon name='ios-add-outline'></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-col>
-</ion-row>
-</ion-item>
-
-<ion-item>
-<ion-row>
-  <ion-col col-3>
-    <ion-thumbnail>
-      <img src="./assets/imgs/supercrema copy 4.png">
-    </ion-thumbnail>
-  </ion-col>
-  <ion-col col-4>
-    <h2>Lavazza Qualita Oro</h2>
-    <p>17.90€</p>
-  </ion-col>
-  <ion-col col-5>
-    <h2 text-right> 0 tk </h2>
-    <ion-buttons class='bug' ion-button outline float-end>
-      <button  class ='bu'outline ion-button icon-only>
-        <ion-icon name='ios-remove-outline'></ion-icon>
-      </button>
-
-      <button class='bu'outline ion-button icon-only>
-        <ion-icon name='ios-add-outline'></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-col>
-</ion-row>
-</ion-item>
-
-<ion-item>
-<ion-row>
-  <ion-col col-3>
-    <ion-thumbnail>
-      <img src="./assets/imgs/supercrema copy 4.png">
-    </ion-thumbnail>
-  </ion-col>
-  <ion-col col-4>
-    <h2>Lavazza Qualita Oro</h2>
-    <p>17.90€</p>
-  </ion-col>
-  <ion-col col-5>
-    <h2 text-right> 0 tk </h2>
-    <ion-buttons class='bug' ion-button outline float-end>
-      <button  class ='bu'outline ion-button icon-only>
-        <ion-icon name='ios-remove-outline'></ion-icon>
-      </button>
-
-      <button class='bu'outline ion-button icon-only>
-        <ion-icon name='ios-add-outline'></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-col>
-</ion-row>
-</ion-item>
-
 </ion-list>
 </div>
 
@@ -179,7 +89,6 @@
         <button  class ='bu'outline ion-button icon-only>
           <ion-icon name='ios-remove-outline'></ion-icon>
         </button>
-
         <button class='bu'outline ion-button icon-only>
           <ion-icon name='ios-add-outline'></ion-icon>
         </button>
@@ -189,27 +98,8 @@
   </ion-item>
 </ion-list>
 </div>
-
-
-
-
-
 </ion-content>
+
 <ion-footer padding >
- <!-- <img src="./assets/imgs/auto.JPG" style="height: auto; margin-left: auto; margin-right: auto;">-->
-<!--
- <div class= 'radius-panel'>
-   <div>
-     <div class='bottle'>
-       <img src="./assets/imgs/bottles1.png" style="display: block;float: right; width: 100%; height: auto;" >
-     </div>
-   <p class='p'>Veepudelite arv:</p>
-   <h2 class='h'><span style="color:red;" (click)="decBottle()" >-</span>&emsp; {{storageservice.order.bottles}}tk &emsp;<span style="color:green;" (click)="incBottle()" >+</span></h2>
-
- </div>
--->
  <button class='butt' ion-button full large (click)="goToOrder()" >Telli</button>
- <!--<h2 text-center><span style="color:red;" (click)="decBottle()">-</span>&emsp; {{storageservice.order.bottles}} tk &emsp;<span style="color:green;"(click)="incBottle()">+</span></h2>
--->
-
 </ion-footer>

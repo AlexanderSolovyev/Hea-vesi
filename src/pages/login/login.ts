@@ -80,28 +80,38 @@ export class LoginPage {
       //});
 
       //loading.present();
-      this.auth.getUserdata(token.auth_token)
-        .subscribe(
-          (res) => {
-            //loading.dismiss();
-            console.log(res);
-            this.storageservice.data=res.info;
-            this.navCtrl.setRoot(TabsPage)
-            .then(() => this.navCtrl.popToRoot());;
-        },
-          (err) => {
-            //loading.dismiss();
-            if (err.status == 401){
-              this.auth.removeToken();
-              this.navCtrl.setRoot(LoginPage)
-              .then(() => this.navCtrl.popToRoot());;
+    this.auth.getUserdata(token.auth_token)
+      .subscribe(
+        (res) => {
+          //loading.dismiss();
+          console.log(res);
+          this.storageservice.data=res.info;
 
-            //  this.navCtrl.setRoot(LoginPage)
-            //    .then(() => this.navCtrl.popToRoot());
-            }
-            else {
-              //this.getUser();
-            }
-          })
-        }
+          this.auth.getGoods(token.auth_token)
+            .subscribe(
+              (goods) => {
+                console.log(goods);
+                this.storageservice.goods=goods;
+                this.navCtrl.setRoot(TabsPage)
+                .then(() => this.navCtrl.popToRoot());;
+              }
+            )
+
+
+        },
+        (err) => {
+          //loading.dismiss();
+          if (err.status == 401){
+            this.auth.removeToken();
+            this.navCtrl.setRoot(LoginPage)
+            .then(() => this.navCtrl.popToRoot());
+
+          //  this.navCtrl.setRoot(LoginPage)
+          //    .then(() => this.navCtrl.popToRoot());
+          }
+          else {
+            //this.getUser();
+          }
+        })
+      }
 }

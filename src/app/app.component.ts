@@ -54,7 +54,15 @@ export class MyApp {
           (res) => {
             loading.dismiss();
             this.storageservice.data=res.info;
-            this.rootPage=TabsPage;
+            this.auth.getGoods(token)
+              .subscribe(
+                (goods) => {
+                  console.log(goods);
+                  this.storageservice.goods=goods;
+                  this.rootPage=TabsPage;
+                }
+              )
+
         },
           (err) => {
             loading.dismiss();

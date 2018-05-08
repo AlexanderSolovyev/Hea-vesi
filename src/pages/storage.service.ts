@@ -28,6 +28,19 @@ export class StorageService {
     information: ''
   };
 
+  goods= [{
+    good_name: 'HeaVesi 19L',
+    price: '4',
+    image_url: '1',
+    quantity: 0
+  },
+  {
+    good_name: 'Lavazza Qualita Oro',
+    price: '17.90',
+    image_url: '2',
+    quantity: 0
+  }];
+
   deliveryAddresses: any =["Liikury 41-5, Tallin"];
 
   saveOrder(){
@@ -54,6 +67,8 @@ export class StorageService {
           this.order.bottles=data.bottles,
        error => this.order.bottles=2
       );
+    this.goods.forEach((good) => good.quantity=0);
+
   };
 
   loadAddresses(){

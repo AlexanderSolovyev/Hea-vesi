@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams, Platform, LoadingController, AlertController } from 'ionic-angular';
+import {NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import {OrderPage} from "../order/order";
 import {SettingsPage} from "../settings/settings";
 import {StorageService} from "../storage.service";
@@ -18,70 +18,49 @@ export class HomePage implements OnInit{
     deliveryAddress: '',
     information: ''
   };
-//  data: {
-//    name: string,
-//    phone: string,
-//    email: string,
-//  } = this.storageservice.data
-  //deliveryAdresses: string[]= this.storageservice.deliveryAddresses;
-  deliveryTimes = [
-    "9:00 - 17:00",
-    "9:00 - 13:00",
-    "13:00 - 17:00",
-    "17:00 - 20:00"
-  ];
-
+  goods = [];
   token: {auth_token: string};
 
-  //deliveryAddresses = [
-  //  "Liikury 20-25, Tallinn",
-  //  "also address"
-  //];
-  deliveryTime = this.deliveryTimes[0];
-
-
   constructor(public navCtrl: NavController,
-              public alertCtrl: AlertController,
               public navParams: NavParams,
               private storageservice: StorageService,
               public loadingCtrl: LoadingController,
               public plt: Platform) {
     this.plt.ready().then (() => {
       this.loadInitial();
-    //  this.getUserdata();
     })
 
   }
   ngOnInit() {}
 
   goToOrder() {
-    this.storageservice.saveOrder();
     this.storageservice.order.returnedBottles=this.storageservice.order.bottles;
     this.navCtrl.push(OrderPage);
-
-
-
   }
-  GoToSettings() {
 
+  GoToSettings() {
     this.navCtrl.push(SettingsPage)
   }
-  minDate=this.calculateTomorrow();
-  deliveryDate=this.minDate;
 
-  calculateTomorrow() {
-    let d = new Date();
-    let nd = new Date(d.setDate(d.getDate()+1));
-    return nd.toISOString();
-  }
-  decBottle(){
-    if (this.order.bottles > 2) {
-      this.storageservice.order.bottles= this.storageservice.order.bottles-1;
+  decQuantity(good){
+    if (good.quantity > 0) {
+      good.quantity= good.quantity-1;
     };
   }
-  incBottle(){
-    this.storageservice.order.bottles= this.storageservice.order.bottles+1;
+
+  incQuantity(good){
+    good.quantity= good.quantity+1;
+  };
+
+  decBottles(){
+    if (this.order.bottles > 0) {
+      this.order.bottles= this.order.bottles-1;
     };
+  }
+
+  incBottles(){
+  this.order.bottles= this.order.bottles+1;
+  };
 
   loadInitial(){
     this.storageservice.loadOrder();
@@ -100,22 +79,11 @@ export class HomePage implements OnInit{
           });
 
     this.order=this.storageservice.order;
-    this.order.deliveryDate=this.deliveryDate;
+    this.goods=this.storageservice.goods;
+    console.log(this.goods);
   }
 
   ionViewWillEnter(){
-
   }
-
-
-    errorAlert(err) {
-      console.log(err);
-      let alert = this.alertCtrl.create({
-        title: 'Server error',
-        subTitle: err,
-        buttons: ['Try again']
-      });
-      alert.present();
-    }
 
 }

@@ -5,71 +5,71 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title text-center>{{storageservice.data.name}}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content no-padding >
 
-      <p class='p'>AADRESS</p>
-      <ion-item no-lines>
-      <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
-        <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
-      </ion-select>
-    </ion-item>
+  <p class='p'>AADRESS</p>
+  <ion-item no-lines>
+    <ion-select [(ngModel)]="order.deliveryAddress"  class="my-select">
+      <ion-option  text-center *ngFor="let address of storageservice.deliveryAddresses" >{{address}}</ion-option>
+    </ion-select>
+  </ion-item>
 
-      <p class='p'>KUUPäEV</p>
-      <ion-item  class="date" no-lines >
-        <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="DD MMM, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
+  <p class='p'>KUUPäEV</p>
+  <ion-item  class="date" no-lines >
+    <ion-datetime [(ngModel)]="order.deliveryDate" displayFormat="DD MMM, YYYY" min={{minDate}} max="2019" style="min-width: 50%"></ion-datetime>
 
-        <ion-select [(ngModel)]="order.deliveryTime" style="min-width: 50%">
-          <ion-option *ngFor="let delivery of deliveryTimes" >{{delivery}}</ion-option>
-        </ion-select>
-      </ion-item>
-      <p class='p'>LISA INFO</p>
-      <ion-item  no-lines >
-        <!--<ion-icon name="ios-create-outline" color="" item-end></ion-icon> -->
-        <ion-input placeholder="Fonolukk '101'" [(ngModel)]="order.information"></ion-input>
-      </ion-item>
-      <p class='p'>TELLITUD TOOTED</p>
-      <div padding>
-      <ion-segment [(ngModel)]="invoice">
-        <ion-segment-button value="tellin">
-      Tellin
+    <ion-select [(ngModel)]="order.deliveryTime" style="min-width: 50%">
+      <ion-option *ngFor="let delivery of deliveryTimes" >{{delivery}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <p class='p'>LISA INFO</p>
+  <ion-item  no-lines >
+      <ion-icon name="ios-create-outline" color="" item-end></ion-icon>
+      <ion-input [(ngModel)]="order.information"></ion-input>
+  </ion-item>
+
+  <p class='p'>TELLITUD TOOTED</p>
+  <div padding>
+    <ion-segment [(ngModel)]="invoice">
+      <ion-segment-button value="tellin">
+        Tellin
       </ion-segment-button>
       <ion-segment-button value="tagastan">
-      Tagastan
+        Tagastan
       </ion-segment-button>
     </ion-segment>
-    </div>
-    <div [ngSwitch]="invoice" padding>
-        <ion-list *ngSwitchCase="'tellin'" no-lines>
-            <ion-item>
-              Lavazza Qualita Oro
-              <strong  item-end>2 tk </strong>
-            </ion-item>
-      </ion-list>
-      <ion-item *ngSwitchCase="'tagastan'" no-lines>
-        Pudel
-            <ion-buttons item-end ion-button outline>
-            <button  clear ion-button (click)="incReturnedBottle()">+</button>
-            <button  clear ion-button (click)="decReturnedBottle()">-</button>
-          </ion-buttons >
-            <strong item-end>{{order.returnedBottles}} tk</strong>
+  </div>
 
+  <div [ngSwitch]="invoice" padding>
+    <ion-list *ngSwitchCase="'tellin'" no-lines>
+      <ion-item>
+        Hea Vesi 19L
+        <strong  item-end>{{order.bottles}} tk </strong>
+      </ion-item>
+
+      <ion-item *ngFor="let order_good of order_goods" >
+        {{order_good.name}}
+        <strong  item-end>{{order_good.quantity}} tk </strong>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngSwitchCase="'tagastan'" no-lines>
+      Pudel
+      <ion-buttons item-end ion-button outline>
+        <button  clear ion-button (click)="decReturnedBottle()">-</button>
+        <button  clear ion-button (click)="incReturnedBottle()">+</button>
+      </ion-buttons >
+      <strong item-end>{{order.returnedBottles}} tk</strong>
     </ion-item>
-    </div>
+  </div>
 
-
-
-
-
-
-<div padding>
-    <button class='butt' ion-button color="primary" full large (click)="sendUserOrder1()" [disabled]="active">Kinnita tellimus</button>
-</div>
-  </ion-content>
+  <div padding>
+    <button class='butt' ion-button color="primary" full large (click)="sendUserOrder()" [disabled]="active">Kinnita tellimus</button>
+  </div>
+</ion-content>
