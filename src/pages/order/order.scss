@@ -11,12 +11,12 @@ page-order {
   }
   .p {
     //font-size: 1em;
-    padding-top: 8pt;
+    padding-top: 6pt;
     //margin-bottom: 0px;
     padding-left: 25pt;
     color: #6C6960;
     background-color: #efeff4;
-    height: 28pt;
+    height: 22pt;
     margin: 0;
   }
   .c {
@@ -46,6 +46,10 @@ page-order {
     border: 1px ;
     border-radius: 10px;
     opacity: 1.0;
+  }
+  .e {
+    margin-left: 50px;
+    margin-right: 50px;
   }
 
 }

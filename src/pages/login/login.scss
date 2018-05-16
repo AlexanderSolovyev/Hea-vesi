@@ -1,6 +1,6 @@
 page-login {
   .background-color {
-    background-color: #79acdb;
+    background-image: url('../assets/imgs/login.png');
   }
 
   .radius-panel {
@@ -14,7 +14,8 @@ page-login {
 
   }
   .item {
-    background-color: transparent;
+    background-color: white;
+    opacity: 0.8;
     //height: 40px;
     font-size: 1em;
   }
@@ -22,7 +23,8 @@ page-login {
     color: red;
   }
   p {
-    color: blue;
+    color: white;
+    
   }
   .center {
     display:block;

@@ -17,9 +17,8 @@
   <img class='center' src="./assets/imgs/logo.png" style="width: 40%; height: auto; margin-left: auto; margin-right: auto;">
   <form #form="ngForm" (ngSubmit)="resend(form.value)" novalidate>
     <ion-list no-lines >
-      <div class ='radius-panel'>
       <ion-item  >
-        <ion-label color='primary' stacked>Email</ion-label>
+        <ion-label color='primary' >E-post</ion-label>
         <ion-input type="email" name="email" placeholder='Type your email address here' ngModel required #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
@@ -29,7 +28,6 @@
       <div padding>
         <button ion-button color="primary" block type="submit" [disabled]="!form.valid">Send</button>
       </div>
-    </div>
 
     </ion-list>
   </form>

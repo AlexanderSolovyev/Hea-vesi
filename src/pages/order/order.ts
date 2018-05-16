@@ -63,6 +63,7 @@ export class OrderPage implements OnInit{
     this.data=this.storageservice.data;
     this.goods=this.storageservice.goods;
     this.order_goods = this.goods.filter((good) =>(good.quantity>0));
+    this.order.deliveryDate=this.minDate;
     console.log(this.order_goods);
   }
 

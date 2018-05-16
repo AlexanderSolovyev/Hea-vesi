@@ -9,12 +9,11 @@
 
 <ion-content class='background-color' padding>
   <img class='center' src="./assets/imgs/logo.png" style="width: 40%; height: auto; margin-left: auto; margin-right: auto;">
-  <div class ='radius-panel'>
 
   <form #form="ngForm" (ngSubmit)="signup(form.value)" novalidate>
     <ion-list no-lines>
       <ion-item>
-        <ion-label color='primary'  stacked>RegNumber</ion-label>
+        <ion-label color='primary'>Kliendi reg. / isikukood</ion-label>
         <ion-input type="number" name="reg_number" placeholder='Regnumber or number your firm' ngModel required #name="ngModel"
                  [class.invalid]="name.errors && name.dirty"></ion-input>
       </ion-item>
@@ -24,7 +23,7 @@
 
 
       <ion-item>
-        <ion-label color='primary' stacked>Name</ion-label>
+        <ion-label color='primary' >Nimi / firma nimi</ion-label>
         <ion-input type="text" name="name" placeholder='First and last name' ngModel required #name="ngModel"
                  [class.invalid]="name.errors && name.dirty"></ion-input>
       </ion-item>
@@ -33,7 +32,7 @@
     </ion-item>
 
       <ion-item>
-        <ion-label color='primary' stacked>Email</ion-label>
+        <ion-label color='primary' >E-post</ion-label>
         <ion-input type="email" name="email" placeholder='Input valid email address here' ngModel required email #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
@@ -45,7 +44,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label color='primary' stacked>Phone</ion-label>
+        <ion-label color='primary'>Tel. Number</ion-label>
         <ion-input type="tel" name="phone" placeholder='Number of your phone' ngModel required #username="ngModel"
                    [class.invalid]="username.errors && username.dirty"></ion-input>
       </ion-item>
@@ -59,12 +58,10 @@
 
 
       <div padding>
-        <button ion-button color="primary" block type="submit" [disabled]="!form.valid">Sign up</button>
+        <button ion-button color="primary" block type="submit" [disabled]="!form.valid">Registreerin</button>
       </div>
 
     </ion-list>
   </form>
-</div>
 
-  <h3> Please singup. We will send your password on email</h3>
 </ion-content>

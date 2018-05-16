@@ -35,7 +35,7 @@
   </ion-item>
 
   <p class='p'>TELLITUD TOOTED</p>
-  <div padding>
+  <div class = 'e' padding>
     <ion-segment [(ngModel)]="invoice">
       <ion-segment-button value="tellin">
         Tellin
@@ -50,12 +50,12 @@
     <ion-list *ngSwitchCase="'tellin'" no-lines>
       <ion-item>
         Hea Vesi 19L
-        <strong  item-end>{{order.bottles}} tk </strong>
+        <h2  item-end>{{order.bottles}} tk </h2>
       </ion-item>
 
       <ion-item *ngFor="let order_good of order_goods" >
         {{order_good.name}}
-        <strong  item-end>{{order_good.quantity}} tk </strong>
+        <h2  item-end>{{order_good.quantity}} tk </h2>
       </ion-item>
     </ion-list>
 
@@ -65,7 +65,7 @@
         <button  clear ion-button (click)="decReturnedBottle()">-</button>
         <button  clear ion-button (click)="incReturnedBottle()">+</button>
       </ion-buttons >
-      <strong item-end>{{order.returnedBottles}} tk</strong>
+      <h2 item-end>{{order.returnedBottles}} tk</h2>
     </ion-item>
   </div>
 
