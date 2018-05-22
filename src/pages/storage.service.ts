@@ -68,6 +68,11 @@ export class StorageService {
        error => this.order.bottles=2
       );
     this.goods.forEach((good) => good.quantity=0);
+    this.goods.forEach((good)=> {
+      if (good.name.length > 17) {
+        good.name=good.name.slice(0,17)+"...";
+      }
+    });
 
   };
 

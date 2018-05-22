@@ -41,12 +41,14 @@
       </ion-col>
     </ion-row>
     </ion-item>
-
-    <ion-item *ngFor="let good of goods">
-    <ion-row>
+    <div *ngFor="let good of goods">
+    <ion-item  *ngIf="!rent(good)">
+    <ion-row >
       <ion-col col-3>
         <ion-thumbnail>
-          <img src="http://212.7.4.74:8443/goods/{{good.id}}">
+          <img src="http://212.7.4.74:8443/goods/{{good.id}}"
+            style="width: 50%"
+          >
         </ion-thumbnail>
       </ion-col>
       <ion-col col-4>
@@ -67,35 +69,41 @@
       </ion-col>
     </ion-row>
   </ion-item>
+</div>
 </ion-list>
 </div>
 
 <div [ngSwitch]="itemslist">
 <ion-list *ngSwitchCase="'rent'">
-  <ion-item>
-  <ion-row>
+  <div *ngFor="let good of goods">
+  <ion-item  *ngIf="rent(good)">
+  <ion-row >
     <ion-col col-3>
       <ion-thumbnail>
-        <img src="./assets/imgs/supercrema copy 4.png">
+        <img src="http://212.7.4.74:8443/goods/{{good.id}}"
+          style="width: 50%"
+        >
       </ion-thumbnail>
     </ion-col>
     <ion-col col-4>
-      <h2>Lavazza Qualita Oro</h2>
-      <p>17.90€</p>
+      {{good.name}}
+      <p> </p>
     </ion-col>
     <ion-col col-5>
-      <h2 text-right> 0 tk </h2>
-      <ion-buttons class='bug' ion-button outline float-end>
-        <button  class ='bu'outline ion-button icon-only>
-          <ion-icon name='ios-remove-outline'></ion-icon>
+      <h2 text-right> {{good.quantity}} tk </h2>
+      <ion-buttons class='bug' ion-button outline float-end  >
+        <button  class ='bu'outline ion-button icon-only
+         (click)="decQuantity(good)">
+          <ion-icon name='ios-remove-outline' ></ion-icon>
         </button>
-        <button class='bu'outline ion-button icon-only>
-          <ion-icon name='ios-add-outline'></ion-icon>
+        <button class='bu'outline ion-button icon-only (click)="incQuantity(good)" >
+          <ion-icon name='ios-add-outline' ></ion-icon>
         </button>
       </ion-buttons>
     </ion-col>
   </ion-row>
-  </ion-item>
+</ion-item>
+</div>
 </ion-list>
 </div>
 </ion-content>

@@ -43,6 +43,10 @@ export class AuthProvider {
     return this.http.post(`${this.url}/registration`, values)
   }
 
+  resend(values:any) {
+    return this.http.post(`${this.url}/resend`, values)
+  }
+
   getUserdata(token: any): Observable<any> {
     let headers = new HttpHeaders()
      .set("Content-Type", "application/json")

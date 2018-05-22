@@ -20,6 +20,11 @@ export class HomePage implements OnInit{
   };
   goods = [];
   token: {auth_token: string};
+  rent(good){
+    if (good.rent == 1){
+      return true;
+    }
+  };
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
