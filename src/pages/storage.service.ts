@@ -29,13 +29,13 @@ export class StorageService {
   };
 
   goods= [{
-    good_name: 'HeaVesi 19L',
+    name: 'HeaVesi 19L',
     price: '4',
     image_url: '1',
     quantity: 0
   },
   {
-    good_name: 'Lavazza Qualita Oro',
+    name: 'Lavazza Qualita Oro',
     price: '17.90',
     image_url: '2',
     quantity: 0
