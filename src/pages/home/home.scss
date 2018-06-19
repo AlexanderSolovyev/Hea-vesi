@@ -68,7 +68,15 @@ page-home {
 }
 .bu {
   margin: 0;
-  //padding: 0;
+  width: 50px;
+  //padding: 30;
   border: 0;
+}
+.bu2 {
+  margin: 0;
+  width: 50px;
+  //padding: 30;
+  border-right: 1px;
+  border-radius: 0 3px 3px 0;
 }
 }
