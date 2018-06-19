@@ -17,15 +17,28 @@ import {StorageService} from "../storage.service";
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  tabBarElement: any;
   constructor(public navCtrl: NavController,
               public toast: ToastController,
               public loadingCtrl: LoadingController,
               public storageservice: StorageService,
               public auth: AuthProvider) {
+                this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   //token ={ auth_token: ''};
+
+  ionViewWillEnter() {
+    if (this.tabBarElement){
+      this.tabBarElement.style.display = 'none';
+    };
+  }
+
+  ionViewWillLeave() {
+    if (this.tabBarElement){
+      this.tabBarElement.style.display = 'flex';
+    };
+  }
 
   login(values:any){
     let loading = this.loadingCtrl.create({
