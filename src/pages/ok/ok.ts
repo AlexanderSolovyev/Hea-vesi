@@ -20,6 +20,9 @@ export class OkPage {
   gotoroot() {
     this.navCtrl.popToRoot();
   }
+  gotowebsite() {
+    window.open('http://www.heavesi.ee/');
+  };
 
 
 }
