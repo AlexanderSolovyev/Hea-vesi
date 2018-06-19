@@ -14,6 +14,7 @@
 
 <ion-content padding class="outer-content">
 
+
   <ion-list >
     <ion-list-header>Profile</ion-list-header>
     <form (ngSubmit)="saveProfile(form)" #form="ngForm">
@@ -111,6 +112,7 @@
           <ion-icon name="ios-remove-circle" color="danger" item-start (click)="decAddress(i)"></ion-icon>
       </ion-item>
   </ion-list>
+  <button ion-button full  color="danger" (click)="logout()">Log out</button>
 
 
 

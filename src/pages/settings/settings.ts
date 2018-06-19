@@ -1,7 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Navbar, NavController, NavParams} from 'ionic-angular';
 import { FormGroup, NgForm} from "@angular/forms";
-import { StorageService } from '../storage.service'
+import { StorageService } from '../storage.service';
+import { AuthProvider } from '../../providers/auth/auth';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SettingsPage page.
@@ -31,6 +33,7 @@ export class SettingsPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public auth: AuthProvider,
               private storageservice: StorageService) {
   }
   ngOnInit() {
@@ -58,6 +61,12 @@ export class SettingsPage implements OnInit {
 
       this.navCtrl.pop()
     }
+  }
+
+  logout() {
+    this.auth.removeToken();
+    this.navCtrl.setRoot(LoginPage)
+    .then(() => this.navCtrl.popToRoot());
   }
 
 }
