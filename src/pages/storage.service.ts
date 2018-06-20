@@ -41,7 +41,7 @@ export class StorageService {
     quantity: 0
   }];
 
-  deliveryAddresses: any =["Liikury 41-5, Tallin"];
+  deliveryAddresses: any =[];
 
   saveOrder(){
     this.nativeStorage.setItem('order',
