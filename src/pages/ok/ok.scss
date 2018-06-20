@@ -12,4 +12,12 @@ page-ok {
   h3 {
     color: #1074bc;
   }
+  a {
+    background-image: url('../assets/imgs/banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    //width: 100%;
+    //opacity: 0.5;
+  }
 }
