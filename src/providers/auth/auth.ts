@@ -16,7 +16,7 @@ export class AuthProvider {
               private storage: Storage) {
   }
 
-  url='http://212.7.4.74:8443';
+  url='http://app.heavesi.ee:443';
   //url='http://192.168.1.34:3000';
   //token ={ auth_token: ''};
 
