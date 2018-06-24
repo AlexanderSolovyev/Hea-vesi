@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Navbar, NavController, NavParams} from 'ionic-angular';
+import {Navbar, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, NgForm} from "@angular/forms";
 import { StorageService } from '../storage.service';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -65,8 +65,11 @@ export class SettingsPage implements OnInit {
 
   logout() {
     this.auth.removeToken();
-    this.navCtrl.setRoot(LoginPage)
-    .then(() => this.navCtrl.popToRoot());
+  //  var initialHref = window.location.href;
+    this.navCtrl.setRoot(LoginPage);
+//window.location.href = initialHref;
+    //this.navCtrl.setRoot(LoginPage)
+    //.then(() => this.navCtrl.popToRoot());
   }
 
 }

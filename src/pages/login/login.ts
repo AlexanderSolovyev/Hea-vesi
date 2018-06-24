@@ -105,7 +105,10 @@ export class LoginPage {
               (goods) => {
                 console.log(goods);
                 this.storageservice.goods=goods;
+                var initialHref = window.location.href;
+                window.location.href = initialHref;
                 this.navCtrl.setRoot(TabsPage)
+                //.then(() =>this.navCtrl.parent.select(0));
                 .then(() => this.navCtrl.popToRoot());;
               }
             )

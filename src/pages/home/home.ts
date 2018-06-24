@@ -89,6 +89,7 @@ export class HomePage implements OnInit{
   }
 
   ionViewWillEnter(){
+    
   }
 
 }
