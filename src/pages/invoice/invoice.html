@@ -7,12 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Invoice</ion-title>
+    <ion-title>Tellimused</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let invoice of invoices" >
+      <ion-row>
+        <ion-col col-9>
+          <ion-icon name="{{invoice.condition}}" color="secondary"></ion-icon>
 
+          {{invoice.number}}
+          <p>
+            {{invoice.deliveryAddress}}
+          </p>
+          <p>
+            {{invoice.deliveryDate}}
+            {{invoice.deliveryTime}}
+          </p>
+
+        </ion-col>
+        <ion-col col-3 text-right >
+          {{invoice.amount}}eu
+        </ion-col>
+    </ion-row>
+    </ion-item>
+  </ion-list>
 </ion-content>

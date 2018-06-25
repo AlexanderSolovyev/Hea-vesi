@@ -13,8 +13,8 @@
   <form #form="ngForm" (ngSubmit)="signup(form.value)" novalidate>
     <ion-list no-lines>
       <ion-item>
-        <ion-label color='primary'>Kliendi reg. / isikukood</ion-label>
-        <ion-input type="number" name="reg_number" placeholder='Regnumber or number your firm' ngModel required #name="ngModel"
+        <ion-label color='primary'>Kliendi reg/isikukood</ion-label>
+        <ion-input type="number" name="reg_number" placeholder='Regnumber' ngModel required #name="ngModel"
                  [class.invalid]="name.errors && name.dirty"></ion-input>
       </ion-item>
     <ion-item class="error-message" *ngIf="name.errors?.required && name.dirty">
@@ -23,7 +23,7 @@
 
 
       <ion-item>
-        <ion-label color='primary' >Nimi / firma nimi</ion-label>
+        <ion-label color='primary' >Nimi/firma nimi</ion-label>
         <ion-input type="text" name="name" placeholder='First and last name' ngModel required #name="ngModel"
                  [class.invalid]="name.errors && name.dirty"></ion-input>
       </ion-item>
@@ -44,7 +44,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label color='primary'>Tel. Number</ion-label>
+        <ion-label color='primary'>Tel.Number</ion-label>
         <ion-input type="tel" name="phone" placeholder='Number of your phone' ngModel required #username="ngModel"
                    [class.invalid]="username.errors && username.dirty"></ion-input>
       </ion-item>

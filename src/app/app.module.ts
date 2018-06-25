@@ -22,6 +22,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import {StorageService} from "../pages/storage.service";
 import { InfoPage } from '../pages/info/info';
 import {RememberPage} from '../pages/remember/remember';
+import { InvoicePage } from '../pages/invoice/invoice';
 @NgModule({
   declarations: [
     MyApp,
@@ -33,7 +34,8 @@ import {RememberPage} from '../pages/remember/remember';
     SignupPage,
     InfoPage,
     RememberPage,
-    TabsPage
+    TabsPage,
+    InvoicePage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import {RememberPage} from '../pages/remember/remember';
     SignupPage,
     InfoPage,
     RememberPage,
-    TabsPage
+    TabsPage,
+    InvoicePage
   ],
   providers: [
     StatusBar,
