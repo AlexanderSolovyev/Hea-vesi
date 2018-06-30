@@ -16,8 +16,8 @@ export class AuthProvider {
               private storage: Storage) {
   }
 
-  //url='http://app.heavesi.ee:443';
-  url='http://localhost:3000';
+  url='https://app.heavesi.ee';
+  //url='http://localhost:3000';
   //token ={ auth_token: ''};
 
   loadToken() {
