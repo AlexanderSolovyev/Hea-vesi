@@ -14,7 +14,9 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'invoice.html',
 })
 export class InvoicePage {
-  invoices=[];
+  tellimused=[];
+  arved=[];
+  invoicelist="tellimused"
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -24,15 +26,29 @@ export class InvoicePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InvoicePage');
-    this.refresh();
-
+    this.tellimused_refresh();
+    this.arved_refresh();
   }
-  refresh(){
+  tellimused_refresh(){
     return this.auth.loadToken().
       then((token)=> this.auth.getInvoices(token)
         .subscribe(
-          (data) => this.invoices=data
+          (data) => this.tellimused=data
         ));
   }
 
+  arved_refresh(){
+    return this.auth.loadToken().
+      then((token)=> this.auth.getArved(token)
+        .subscribe(
+          (data) => this.arved=data
+        ));
+  }
+
+  doRefresh(refresher){
+    this.tellimused_refresh()
+    .then(()=> this.arved_refresh()
+    .then(()=> refresher.complete())
+  );
+  }
 }

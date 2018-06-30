@@ -7,13 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Tellimused</ion-title>
+    <div padding>
+    <ion-segment [(ngModel)]="invoicelist">
+      <ion-segment-button value="tellimused">
+    Tellimused
+    </ion-segment-button>
+    <ion-segment-button value="arved">
+    Arved
+    </ion-segment-button>
+    </ion-segment>
+    </div>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let invoice of invoices" >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+   <ion-refresher-content
+     pullingIcon="arrow-dropdown"
+     pullingText="Pull to refresh"
+     refreshingSpinner="circles"
+     refreshingText="Refreshing...">
+   </ion-refresher-content>
+   </ion-refresher>
+
+  <div [ngSwitch]="invoicelist">
+  <ion-list *ngSwitchCase="'tellimused'">
+    <ion-item *ngFor="let invoice of tellimused" >
       <ion-row>
         <ion-col col-9>
           <ion-icon name="{{invoice.condition}}" color="secondary"></ion-icon>
@@ -27,7 +46,6 @@
             &emsp;
             {{invoice.deliveryTime}}
           </p>
-
         </ion-col>
         <ion-col col-3 text-right >
           {{invoice.amount}}€
@@ -35,4 +53,36 @@
     </ion-row>
     </ion-item>
   </ion-list>
+</div>
+
+<div [ngSwitch]="invoicelist">
+<ion-list *ngSwitchCase="'arved'">
+  <ion-list-header>
+    Viitenumber: {{arved[0].viitenumber}}
+  </ion-list-header>
+  <ion-item *ngFor="let arve of arved" >
+    <ion-row>
+      <ion-col col-9>
+        <ion-icon name="alarm" color="{{arve.color}}"></ion-icon>
+
+        {{arve.number}}
+        &emsp;
+        {{arve.date}}
+        <p>
+          Maksetähtaeg: {{arve.payDate}}
+
+
+        </p>
+        <p>
+        </p>
+
+      </ion-col>
+      <ion-col col-3 text-right >
+        {{arve.saldo}}€
+      </ion-col>
+  </ion-row>
+  </ion-item>
+</ion-list>
+</div>
+
 </ion-content>

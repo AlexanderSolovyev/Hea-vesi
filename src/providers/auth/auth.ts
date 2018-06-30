@@ -16,8 +16,8 @@ export class AuthProvider {
               private storage: Storage) {
   }
 
-  url='http://app.heavesi.ee:443';
-  //url='http://localhost:3000';
+  //url='http://app.heavesi.ee:443';
+  url='http://localhost:3000';
   //token ={ auth_token: ''};
 
   loadToken() {
@@ -66,6 +66,13 @@ export class AuthProvider {
        .set("Content-Type", "application/json")
        .set("Authorization", token);
       return this.http.get(`${this.url}/invoices`, {headers: headers})
+  }
+
+  getArved(token: any): Observable<any> {
+      let headers = new HttpHeaders()
+       .set("Content-Type", "application/json")
+       .set("Authorization", token);
+      return this.http.get(`${this.url}/arved`, {headers: headers})
   }
 
   send(info: any, token: any): Observable<any> {
