@@ -21,7 +21,7 @@ export class AuthProvider {
   //token ={ auth_token: ''};
 
   loadToken() {
-    return this.storage.get('token')
+    return this.storage.get('token');
   }
 
   removeToken(){
@@ -31,10 +31,6 @@ export class AuthProvider {
   saveToken(token: any) {
     return this.storage.set('token', token)
   }
-
-  //saveToken(token: any) {
-//    return new Promise((resolve, reject) => this.storage.set('token', token))
-//  }
 
   login(values: any): Observable<any> {
     return this.http.post(`${this.url}/authenticate`, values)

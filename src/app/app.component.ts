@@ -45,18 +45,18 @@ export class MyApp {
   getUser(token: any) {
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
-        content: 'Load data ...'
+        content: 'Loading ..'
       });
 
       loading.present();
       this.auth.getUserdata(token)
         .subscribe(
           (res) => {
-            loading.dismiss();
             this.storageservice.data=res.info;
             this.auth.getGoods(token)
               .subscribe(
                 (goods) => {
+                  loading.dismiss();
                   console.log(goods);
                   this.storageservice.goods=goods;
                   this.rootPage=TabsPage;

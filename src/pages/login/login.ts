@@ -87,22 +87,22 @@ export class LoginPage {
     this.navCtrl.push(RememberPage);
   }
   getUser(token: any) {
-      //let loading = this.loadingCtrl.create({
-      //  spinner: 'bubbles',
-      //  content: 'Load data ...'
-      //});
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Loading...'
+      });
 
       //loading.present();
     this.auth.getUserdata(token.auth_token)
       .subscribe(
         (res) => {
-          //loading.dismiss();
           console.log(res);
           this.storageservice.data=res.info;
 
           this.auth.getGoods(token.auth_token)
             .subscribe(
               (goods) => {
+                loading.dismiss();
                 console.log(goods);
                 this.storageservice.goods=goods;
                 var initialHref = window.location.href;
@@ -116,7 +116,7 @@ export class LoginPage {
 
         },
         (err) => {
-          //loading.dismiss();
+            loading.dismiss();
           if (err.status == 401){
             this.auth.removeToken();
             this.navCtrl.setRoot(LoginPage)
