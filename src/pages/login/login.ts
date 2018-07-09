@@ -43,7 +43,7 @@ export class LoginPage {
   login(values:any){
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Logging in ...'
+      content: 'Sisselogimine ...'
     });
 
     loading.present();
@@ -69,7 +69,7 @@ export class LoginPage {
   handleError(error: any) {
     let message: string;
     if (error.status && error.status === 401) {
-      message = 'Login failed';
+      message = 'Sisselogimine ebaõnnestus';
     }
     else {
       message = `Unexpected error: ${error.statusText}`;
@@ -89,7 +89,7 @@ export class LoginPage {
   getUser(token: any) {
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
-        content: 'Loading...'
+        content: 'Laadimine ...'
       });
 
       //loading.present();

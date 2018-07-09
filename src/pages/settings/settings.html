@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar [hideBackButton]="!form.valid || (storageservice.deliveryAddresses.length==0)">
-    <ion-title>settings</ion-title>
+    <ion-title>Profiil</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 
 
   <ion-list >
-    <ion-list-header>Profile</ion-list-header>
+    <ion-list-header>Profiil</ion-list-header>
     <form (ngSubmit)="saveProfile(form)" #form="ngForm">
       <ion-item>
         <ion-icon name="archive" color="primary"item-start></ion-icon>
@@ -56,7 +56,7 @@
 
       <ion-item>
         <ion-icon name="mail" color="primary" item-start></ion-icon>
-        <ion-label color="primary" floating>Email</ion-label>
+        <ion-label color="primary" floating>E-Post</ion-label>
         <ion-input type="email"
                    [(ngModel)]="data.email"
                    name="email"
@@ -71,10 +71,10 @@
   </ion-list>
 
   <ion-list>
-    <ion-list-header>Addresses</ion-list-header>
+    <ion-list-header>Aadressid</ion-list-header>
   <form (ngSubmit)="addAddress(form1)" #form1="ngForm">
     <ion-item>
-      <ion-label color="primary" floating>Input new adress</ion-label>
+      <ion-label color="primary" floating>Lisa uus aadress</ion-label>
       <ion-icon name="home" color="primary" item-start></ion-icon>
       <ion-input
                   type="text"
@@ -87,7 +87,7 @@
     </ion-item>
     <ion-item>
       <ion-icon name="" color="primary" item-start></ion-icon>
-      <ion-label floating color="primary"> Select city</ion-label>
+      <ion-label floating color="primary"> Vali linn</ion-label>
       <ion-select [(ngModel)]="city"
                   name="city"
                   required
@@ -103,7 +103,7 @@
       </ion-select>
 
     </ion-item>
-      <button ion-button  color="secondary" full type="submit" [disabled]="!form1.valid">Add address</button>
+      <button ion-button  color="secondary" full type="submit" [disabled]="!form1.valid">Lisa aadress</button>
 
   </form>
 
@@ -112,7 +112,7 @@
           <ion-icon name="ios-remove-circle" color="danger" item-start (click)="decAddress(i)"></ion-icon>
       </ion-item>
   </ion-list>
-  <button ion-button full  color="danger" (click)="logout()">Log out</button>
+  <button ion-button full  color="danger" (click)="logout()">Väljalogimine</button>
 
 
 

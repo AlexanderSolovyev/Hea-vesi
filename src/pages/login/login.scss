@@ -1,6 +1,8 @@
 page-login {
   .background-color {
     background-image: url('../assets/imgs/login.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .radius-panel {
@@ -24,7 +26,7 @@ page-login {
   }
   p {
     color: white;
-    
+
   }
   .center {
     display:block;

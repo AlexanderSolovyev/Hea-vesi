@@ -45,7 +45,7 @@ export class MyApp {
   getUser(token: any) {
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
-        content: 'Loading ..'
+        content: 'Laadimine ...'
       });
 
       loading.present();

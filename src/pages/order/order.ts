@@ -89,7 +89,7 @@ export class OrderPage implements OnInit{
         if (token) {
           let loading = this.loadingCtrl.create({
             spinner: 'bubbles',
-            content: 'Sending ...'
+            content: 'Saatmine ...'
           });
           loading.present();
           console.log(info);
@@ -103,7 +103,7 @@ export class OrderPage implements OnInit{
               (err) => {
                 loading.dismiss();
                 console.log(err);
-                this.errorAlert("Please try again later")
+                this.errorAlert("Palun provige uuesti")
                 }
                 //else (this.getUserdata())
               )
@@ -127,7 +127,7 @@ export class OrderPage implements OnInit{
   errorAlert(err) {
     console.log(err);
     let alert = this.alertCtrl.create({
-      title: 'Server error',
+      title: 'Serveri viga',
       subTitle: err,
       buttons: ['Ok']
     });

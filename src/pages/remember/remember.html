@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>remember</ion-title>
+    <ion-title>Salasöna</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,14 +19,14 @@
     <ion-list no-lines >
       <ion-item  >
         <ion-label color='primary' >E-post</ion-label>
-        <ion-input type="email" name="email" placeholder='Type your email address here' ngModel required #email="ngModel"
+        <ion-input type="email" name="email" placeholder='' ngModel required #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
       <ion-item color='danger' class="error-message" *ngIf="email.errors?.required && email.dirty">
-        Email is required
+        Palun sisesta E-post
       </ion-item>
       <div padding>
-        <button ion-button color="primary" block type="submit" [disabled]="!form.valid">Send</button>
+        <button ion-button color="primary" block type="submit" [disabled]="!form.valid">Saata</button>
       </div>
 
     </ion-list>

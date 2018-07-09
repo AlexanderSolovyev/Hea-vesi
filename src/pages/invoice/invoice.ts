@@ -35,7 +35,7 @@ export class InvoicePage {
   tellimused_refresh(){
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Loading tellimused...'
+      content: ''
     });
     loading.present();
 
@@ -53,7 +53,7 @@ export class InvoicePage {
   arved_refresh(){
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Loading arved...'
+      content: ''
     });
     loading.present()
     return this.auth.loadToken().
