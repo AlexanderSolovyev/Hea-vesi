@@ -39,7 +39,7 @@ import { InvoicePage } from '../pages/invoice/invoice';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { backButtonText: ''}),
     IonicStorageModule.forRoot(),
     HttpClientModule,
     FormsModule,
