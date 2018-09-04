@@ -19,6 +19,7 @@ export class HomePage implements OnInit{
     information: ''
   };
   goods = [];
+  water_price = '';
   token: {auth_token: string};
   rent(good){
     if (good.rent == 1){
@@ -85,11 +86,12 @@ export class HomePage implements OnInit{
 
     this.order=this.storageservice.order;
     this.goods=this.storageservice.goods;
+    this.water_price = this.storageservice.water_price;
     console.log(this.goods);
   }
 
   ionViewWillEnter(){
-    
+
   }
 
 }

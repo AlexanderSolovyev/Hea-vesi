@@ -40,6 +40,7 @@ export class StorageService {
     image_url: '2',
     quantity: 0
   }];
+  water_price=''
 
   deliveryAddresses: any =[];
 
@@ -67,6 +68,8 @@ export class StorageService {
           this.order.bottles=data.bottles,
        error => this.order.bottles=2
       );
+    this.water_price=this.goods.splice(0,1)[0].price;
+    console.log(this.water_price);
     this.goods.forEach((good) => good.quantity=0);
     this.goods.forEach((good)=> {
       if (good.name.length > 17) {
