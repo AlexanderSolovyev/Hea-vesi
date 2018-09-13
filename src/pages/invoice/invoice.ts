@@ -61,7 +61,6 @@ export class InvoicePage {
         .subscribe((data)=> {
         this.arved=data;
         loading.dismiss();
-        //refresher.complete();
       })
       )
   }
@@ -70,10 +69,7 @@ export class InvoicePage {
     console.log(refresher);
     this.tellimused_refresh();
     this.arved_refresh();
-      //.subscribe((data)=> {
-      //  this.arved=data
     refresher.complete();
-      //})
   }
 
   initialLoading(){
