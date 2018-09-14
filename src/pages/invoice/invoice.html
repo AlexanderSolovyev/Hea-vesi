@@ -22,14 +22,7 @@
 </ion-header>
 <ion-content padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-  <!-- <ion-refresher-content
-     pullingIcon="arrow-dropdown"
-     pullingText="Pull to refresh"
-     refreshingSpinner="circles"
-     refreshingText="Refreshing...">
-   </ion-refresher-content> -->
    </ion-refresher>
-
   <div [ngSwitch]="invoicelist">
   <ion-list *ngSwitchCase="'tellimused'">
     <ion-item *ngFor="let invoice of tellimused" >
@@ -63,7 +56,7 @@
   <ion-item *ngFor="let arve of arved" >
     <ion-row>
       <ion-col col-9>
-        <ion-icon name="list-box-outline" color="{{arve.color}}"></ion-icon>
+        <ion-icon name="list-box" color="{{arve.color}}"></ion-icon>
 
         {{arve.number}}
         &emsp;
