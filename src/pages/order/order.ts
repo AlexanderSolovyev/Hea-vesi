@@ -73,6 +73,10 @@ export class OrderPage implements OnInit{
 
 
   sendUserOrder() {
+    if (this.storageservice.order.deliveryAddress == ''){
+      this.errorAlert("You must enter delivery address in profile");
+      return;
+    }
     const info = {
       bottles: this.storageservice.order.bottles,
       returned_bottles: this.storageservice.order.returnedBottles,
