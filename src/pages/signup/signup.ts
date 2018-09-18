@@ -32,7 +32,7 @@ export class SignupPage {
     this.auth.signup(values)
       .subscribe(
         () => {loading.dismiss();
-                this.handleError(`Registration succefully`);
+                this.handleError(`Password sent to your email`);
                 this.navCtrl.pop();
       },
         (err) => {
@@ -47,7 +47,7 @@ export class SignupPage {
 
     const toast = this.toastCtrl.create({
       message,
-      duration: 5000,
+      duration: 10000,
       position: 'bottom'
     });
 
