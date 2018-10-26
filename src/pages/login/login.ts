@@ -64,7 +64,8 @@ export class LoginPage {
   }
 
   signup(){
-    this.navCtrl.push(SignupPage)
+    window.open('http://www.heavesi.ee/');
+    //this.navCtrl.push(SignupPage)
   }
   handleError(error: any) {
     let message: string;
@@ -84,7 +85,7 @@ export class LoginPage {
     toast.present();
   }
   remember(){
-    this.navCtrl.push(RememberPage);
+    //this.navCtrl.push(RememberPage);
   }
   getUser(token: any) {
       let loading = this.loadingCtrl.create({

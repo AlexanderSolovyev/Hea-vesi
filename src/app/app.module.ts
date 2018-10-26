@@ -16,6 +16,7 @@ import {OrderPage} from "../pages/order/order";
 import {OkPage} from "../pages/ok/ok";
 import {SettingsPage} from "../pages/settings/settings";
 import { LoginPage} from '../pages/login/login';
+import { AddressPage } from '../pages/address/address';
 import { SignupPage} from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthProvider } from '../providers/auth/auth';
@@ -35,7 +36,8 @@ import { InvoicePage } from '../pages/invoice/invoice';
     InfoPage,
     RememberPage,
     TabsPage,
-    InvoicePage
+    InvoicePage,
+    AddressPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { InvoicePage } from '../pages/invoice/invoice';
     InfoPage,
     RememberPage,
     TabsPage,
-    InvoicePage
+    InvoicePage,
+    AddressPage
   ],
   providers: [
     StatusBar,
