@@ -64,8 +64,8 @@ export class LoginPage {
   }
 
   signup(){
-    window.open('http://www.heavesi.ee/');
-    //this.navCtrl.push(SignupPage)
+    //window.open('http://www.heavesi.ee/');
+    this.navCtrl.push(SignupPage)
   }
   handleError(error: any) {
     let message: string;

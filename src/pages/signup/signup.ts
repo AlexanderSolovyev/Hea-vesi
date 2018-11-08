@@ -31,8 +31,9 @@ export class SignupPage {
 
     this.auth.signup(values)
       .subscribe(
-        () => {loading.dismiss();
-                this.handleError(`Password sent to your email`);
+        (token) => {loading.dismiss();
+                this.handleError(`Registration completed`);
+                console.log(token);
                 this.navCtrl.pop();
       },
         (err) => {
@@ -47,7 +48,7 @@ export class SignupPage {
 
     const toast = this.toastCtrl.create({
       message,
-      duration: 10000,
+      duration: 15000,
       position: 'bottom'
     });
 
