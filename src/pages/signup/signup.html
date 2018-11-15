@@ -48,6 +48,11 @@
         <ion-input type="tel" name="phone" placeholder='' ngModel required #username="ngModel"
                    [class.invalid]="username.errors && username.dirty"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label color='primary'>Salasöna</ion-label>
+        <ion-input type="text" name="password" placeholder='' ngModel required #password="ngModel"
+                 [class.invalid]="password.errors && password.dirty"></ion-input>
+      </ion-item>
       <ion-item class="error-message" *ngIf="username.errors?.required && username.dirty">
         Palun sisesta Tel.Number
       </ion-item>

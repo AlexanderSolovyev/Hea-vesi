@@ -49,7 +49,8 @@ export class SettingsPage implements OnInit {
      this.city='Tallinn ja Harjumaa';
    }
    decAddress (index) {
-     this.storageservice.deliveryAddresses.splice(index, 1)
+     this.storageservice.deliveryAddresses.splice(index, 1);
+     this.storageservice.saveAddresses();
    }
 
   ionViewDidLoad() {

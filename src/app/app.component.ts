@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController } from 'ionic-angular';
+import { Platform, LoadingController, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ScreenOrientation} from "@ionic-native/screen-orientation";
@@ -22,6 +22,7 @@ export class MyApp {
       screenOrientation: ScreenOrientation,
       public storageservice: StorageService,
       public loadingCtrl: LoadingController,
+      private alertCtrl: AlertController,
       public auth: AuthProvider
       ) {
     platform.ready().then(() => {
@@ -74,10 +75,22 @@ export class MyApp {
             //    .then(() => this.navCtrl.popToRoot());
             }
             else {
-              //this.getUser();
+              this.errorAlert(token,"Palun provige uuesti");
             }
           })
         }
 
-
+  errorAlert(token,err) {
+    console.log(err);
+    let alert = this.alertCtrl.create({
+      title: 'Serveri viga',
+      subTitle: err,
+      buttons: [
+        {text:'Ok',
+        handler: () => { this.getUser(token);}
+      }
+      ]
+    });
+    alert.present();
+  }
 }

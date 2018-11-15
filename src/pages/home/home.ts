@@ -3,6 +3,7 @@ import {NavController, NavParams, Platform, LoadingController } from 'ionic-angu
 import {OrderPage} from "../order/order";
 import {SettingsPage} from "../settings/settings";
 import {StorageService} from "../storage.service";
+import {AddressPage} from "../address/address";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -80,7 +81,7 @@ export class HomePage implements OnInit{
         error => {console.log(error)})
         .then(
           data => {
-            if (this.storageservice.deliveryAddresses.length < 1){ this.navCtrl.push(SettingsPage)}
+            if (this.storageservice.deliveryAddresses.length < 1){ this.navCtrl.push(AddressPage)}
             else { this.order.deliveryAddress = this.storageservice.deliveryAddresses[0]; }
           });
 

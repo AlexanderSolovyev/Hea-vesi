@@ -1,0 +1,60 @@
+<!--
+  Generated template for the AddressPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="outer-content">
+  <ion-list >
+    <ion-list-header>Palun lisa aadress</ion-list-header>
+    <form (ngSubmit)="addAddress(form1)" #form1="ngForm">
+      <ion-item>
+        <ion-label color="primary" floating>Lisa uus aadress</ion-label>
+        <ion-icon name="home" color="primary" item-start></ion-icon>
+        <ion-input
+                    type="text"
+                   [(ngModel)]="ulitsa"
+                   name="adress"
+                   required
+        >
+
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="" color="primary" item-start></ion-icon>
+        <ion-label floating color="primary"> Vali linn</ion-label>
+        <ion-select [(ngModel)]="city"
+                    name="city"
+                    required
+        >
+
+          <ion-option selected="true">Tallinn ja Harjumaa</ion-option>
+          <ion-option>Tartu</ion-option>
+          <ion-option>Jõhvi</ion-option>
+          <ion-option>Narva</ion-option>
+          <ion-option>Kohtla-Järve</ion-option>
+          <ion-option>Sillamäe</ion-option>
+          <ion-option>Rakvere</ion-option>
+        </ion-select>
+
+      </ion-item>
+        <button ion-button  color="secondary" full type="submit" [disabled]="!form1.valid">Lisa aadress</button>
+
+    </form>
+    <ion-item *ngFor="let address of storageservice.deliveryAddresses;index as i" >
+       {{address}}
+        <ion-icon name="ios-remove-circle" color="danger" item-start (click)="decAddress(i)"></ion-icon>
+    </ion-item>
+  </ion-list>
+  <p >Sinu lepingu hinnad ning tellimuste ja arvete andmed laaditakse pärast registreerimise kinnitamist</p>
+
+</ion-content>
