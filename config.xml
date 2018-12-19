@@ -88,6 +88,6 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-screen-orientation" spec="^2.0.2" />
     <engine name="android" spec="6.4.0" />
-    <engine name="ios" spec="4.5.3" />
+    <engine name="ios" spec="^4.5.5" />
     <engine name="browser" spec="5.0.4" />
 </widget>
