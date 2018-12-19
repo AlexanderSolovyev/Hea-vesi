@@ -85,7 +85,7 @@ export class LoginPage {
     toast.present();
   }
   remember(){
-    //this.navCtrl.push(RememberPage);
+    this.navCtrl.push(RememberPage);
   }
   getUser(token: any) {
       let loading = this.loadingCtrl.create({

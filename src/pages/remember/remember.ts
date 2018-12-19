@@ -44,7 +44,8 @@ export class RememberPage {
         (err) => {
           loading.dismiss();
           console.log(err);
-          this.handleError(err.error);}
+          
+          this.handleError(JSON.parse(err.error).error);}
       )
   }
 
